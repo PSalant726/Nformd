@@ -1,7 +1,9 @@
-# Phase 5: Allow Complex Styling in Notes (1 days, W2 Th 6pm)
+# Phase 5: Allow Likes/Favorites in Stories (1 days, W2 Th 6pm)
 
 ## Rails
 ### Models
+* Like
+* Favorite
 
 ### Controllers
 
@@ -17,4 +19,3 @@
 ### ApiUtil
 
 ## Gems/Libraries
-* react-quill (npm)

@@ -1,33 +1,33 @@
 # FresherNote
 
-[Heroku link][heroku] **Note:** This should be a link to your production site
+[Nformd][heroku]
 
-[heroku]: http://www.herokuapp.com
+[heroku]: https://nformd.herokuapp.com/
 
 ## Minimum Viable Product
 
-FresherNote is a web application inspired by Evernote that will be build using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
+Nformd is a web application inspired by Medium that will be built using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
 
 - [ ] Hosting on Heroku
 - [ ] New account creation, login, and guest/demo login
-- [ ] A production README, replacing this README (**NB**: check out the [sample production README](docs/production_readme.md) -- you'll write this later)
-- [ ] Notes
+- [ ] A production README, replacing this README
+- [ ] Stories
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
-- [ ] Notebooks for organizing notes
+- [ ] Commenting on Stories
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
-- [ ] Tags for notes
+- [ ] Follows and Feed
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
-- [ ] Rich Text Editing of notes
+- [ ] Likes/Favorites
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
-- [ ] Infinite Scroll for Notes
+- [ ] Infinite Scroll for Stories
 
 ## Design Docs
 * [View Wireframes][views]
@@ -44,7 +44,7 @@ FresherNote is a web application inspired by Evernote that will be build using R
 
 ## Implementation Timeline
 
-### Phase 1: Backend setup and Front End User Authentication (2 days, W1 W 6pm)
+### [Phase 1][phase-one]: Backend setup and Front End User Authentication (2 days, W1 W 6pm)
 
 **Objective:** Functioning rails project with front-end Authentication
 
@@ -54,81 +54,81 @@ FresherNote is a web application inspired by Evernote that will be build using R
 - [ ] create `StaticPages` controller and root view
 - [ ] set up webpack & flux scaffold with skeleton files
 - [ ] setup `APIUtil` to interact with the API
-- [ ] set up flux cycle for frontend auth
-- [ ] user signup/signin components
-- [ ] blank landing component after signin
-- [ ] style signin/signup components
+- [ ] set up flux cycle for front-end authentication
+- [ ] user signup/sign-in components
+- [ ] blank landing component after sign-in
+- [ ] style sign-in/signup components
 - [ ] seed users
 
-### Phase 2: Notes Model, API, and components (2 days, W1 F 6pm)
+### [Phase 2][phase-two]: Stories Model, API, and components (2 days, W1 F 6pm)
 
-**Objective:** Notes can be created, read, edited and destroyed through
-the API.
+**Objective:** Stories can be created, read, edited and destroyed through the API.
 
-- [ ] create `Note` model
+- [ ] create `Story` model
 - [ ] seed the database with a small amount of test data
-- [ ] CRUD API for notes (`NotesController`)
-- [ ] jBuilder views for notes
+- [ ] CRUD API for Stories (`StoriesController`)
+- [ ] jBuilder views for Stories
 - [ ] test out API interaction in the console.
-- implement each note component, building out the flux loop as needed.
-  - [ ] `NotesIndex`
-  - [ ] `NoteIndexItem`
-  - [ ] `NoteForm`
-- [ ] save Notes to the DB when the form loses focus or is left idle after editing.
-- [ ] style notes components
-- [ ] seed notes
+- implement each Story component, building out the flux loop as needed.
+  - [ ] `StoriesIndex`
+  - [ ] `StoryIndexItem`
+  - [ ] `StoryForm`
+- [ ] save Stories to the DB when the form loses focus or is left idle after editing.
+- [ ] style Stories components
+- [ ] seed Stories
 
-### Phase 3: Notebooks (2 day, W2 Tu 6pm)
+### [Phase 3][phase-three]: Comments (2 day, W2 Tu 6pm)
 
-**Objective:** Notes belong to Notebooks, and can be viewed by notebook.
+**Objective:** Comments belong to Stories, and can be viewed by Story.
 
-- [ ] create `Notebook` model
+- [ ] create `Comments` model
 - build out API, Flux loop, and components for:
-  - [ ] Notebook CRUD
-  - [ ] adding notes requires a notebook
-  - [ ] moving notes to a different notebook
-  - [ ] viewing notes by notebook
+  - [ ] Comment CRUD
+  - [ ] adding Comments requires a Story
+  - [ ] viewing Comments by Story
 - [ ] Use CSS to style new components
-- [ ] Seed Notebooks
+- [ ] Seed Comments
 
-Phase 3 adds organization to the Notes. Notes belong to a Notebook,
-which has its own `Index` view.
+Phase 3 adds organization to the Comments. Comments belong to a Story, which has its own `Index` view.
 
-### Phase 4: Tags (1 days, W2 W 6pm)
+### [Phase 4][phase-four]: Followers and Feed (1 days, W2 W 6pm)
 
-**Objective:** Notes can be tagged with multiple tags, and tags are searchable.
+**Objective:** Users can follow many other Users, and view all of their followed Users' Stories in their Feed.
 
-- [ ] create `Tag` model and join table
+- [ ] create `Follows` model and join table
 - build out API, Flux loop, and components for:
-  - [ ] fetching tags for notebook
-  - [ ] adding tags to notebook
-  - [ ] creating tags while adding to notebooks
-  - [ ] searching notebooks by tag
+  - [ ] fetching Followers for Users
+  - [ ] adding Followers to Users
+  - [ ] searching Followers by User
+  - [ ] unfollowing Users
 - [ ] Style new elements
-- [ ] Seed tags and tag the seeded Notebooks
+- [ ] Seed additional Users and add Followers to the seeded Users
 
-### Phase 5: Allow Complex Styling in Notes (1 days, W2 Th 6pm)
+### [Phase 5][phase-five]: Allow Likes/Favorites in Stories (1 days, W2 Th 6pm)
 
-**objective:** Enable complex styling of notes.
+**objective:** Users can Like Stories, or Favorite them for later viewing.
 
-- [ ] Integrate `react-quill` (based on Quill.js).
-- [ ] Use Rails helpers to sanitize HTML before rendering.
-- [ ] Style the new Quill elements.
-- [ ] Add Quill styling to seeded notes
+- [ ] create `Likes` and `Favorites` models and join table
+- build out API, Flux loop, and components for:
+  - [ ] fetching Favorites for Users
+  - [ ] adding Likes to Stories
+  - [ ] searching Favorites by User
+  - [ ] un-Favoriting/un-Liking Stories
+- [ ] Style new elements
+- [ ] Seed additional Stories, add Favorites for the seeded Users, add Likes for the seeded Stories
 
-### Phase 6: - Pagination / infinite scroll for Notes Index (1 day, W2 F 6pm)
+### Phase 6: - Pagination / infinite scroll for Stories Index (1 day, W2 F 6pm)
 
-**objective:** Add infinite scroll to Notes Index
+**objective:** Add infinite scroll to Stories Index
 
-- [ ] Paginate Notes Index API to send 20 results at a time
+- [ ] Paginate Stories Index API to send 10 results at a time
 - [ ] Append next set of results when user scrolls and is near bottom
 - [ ] Make sure styling still looks good
-- [ ] Ensure we have enough seeded notes to demo infinite scroll
+- [ ] Ensure we have enough seeded Stories to demo infinite scroll
 
 ### Bonus Features (TBD)
-- [ ] Search through notes for blocks of text
-- [ ] Set reminders on notes
-- [ ] Changelogs for Notes
+- [ ] Topics/Categories
+- [ ] Bookmarks
 - [ ] Multiple sessions
 
 [phase-one]: docs/phases/phase1.md

@@ -1,4 +1,4 @@
-# Phase 1: User Authentication, Note Model and JSON API (2 days, W1 W 6pm)
+# Phase 1: Backend setup and Front End User Authentication (2 days, W1 W 6pm)
 
 ## Rails
 ### Models
@@ -8,10 +8,12 @@
 ### Controllers
 * Api::UsersController (create)
 * Api::SessionsController (create, destroy, show)
+* StaticPagesController (root)
 
 ### Views
 * api/users/new.html.erb
 * api/session/new.html.erb
+* static_pages/root.html.erb
 
 
 ## Flux
@@ -19,7 +21,7 @@
 * App
 * LoginForm
 * SignupForm
-* NotesIndex (just a skeleton)
+* StoriesIndex (just a skeleton)
 
 ### Stores
 * CurrentUser

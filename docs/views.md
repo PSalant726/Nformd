@@ -6,17 +6,13 @@
 ## New Session
 ![new-session]
 
-## NotesIndex / NoteIndexItem / NoteForm
-![notes]
+## StoriesIndex / StoryIndexItem / StoryForm
+![stories]
 
-## NotebooksIndex / NotebookIndexItem
-![notebooks]
-
-## NotebookForm
-![notebook-form]
+## StoryForm
+![story-form]
 
 [new-user]: ./wireframes/new_user.png
 [new-session]: ./wireframes/new_session.png
-[notes]: ./wireframes/root_notes.png
-[notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
+[stories]: ./wireframes/user_feed.png
+[story-form]: ./wireframes/story_form.png

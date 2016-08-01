@@ -1,42 +1,40 @@
-# Phase 3: Notebooks (2 day, W2 Tu 6pm)
+# Phase 3: Comments (2 day, W2 Tu 6pm)
 
 ## Rails
 ### Models
-* Notebook
-* Tag
-* Tagging
+* Comment
 
 ### Controllers
-* Api::NotebooksController (create, destroy, index, show, update)
+* Api::CommentsController (create, destroy, index, show, update)
 
 ### Views
-* notebooks/index.json.jbuilder
-* notebooks/show.json.jbuilder
+* comments/index.json.jbuilder
+* comments/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* NotebooksIndex
-  - NotebookIndexItem
-* NotebookForm
+* CommentsIndex
+  - CommentIndexItem
+* CommentForm
 
 ### Stores
-* Notebook
+* Comment
 
 ### Actions
-* `ApiActions.receiveAllNotebooks`
-* `ApiActions.receiveSingleNotebook`
-* `ApiActions.deleteNotebook`
-* `NotebookActions.fetchAllNotebooks`
-* `NotebookActions.fetchSingleNotebook`
-* `NotebookActions.createNotebook`
-* `NotebookActions.editNotebook`
-* `NotebookActions.destroyNotebook`
+* `ApiActions.receiveAllComments`
+* `ApiActions.receiveSingleComment`
+* `ApiActions.deleteComment`
+* `CommentActions.fetchAllComments`
+* `CommentActions.fetchSingleComment`
+* `CommentActions.createComment`
+* `CommentActions.editComment`
+* `CommentActions.destroyComment`
 
 ### ApiUtil
-* `ApiUtil.fetchAllNotebooks`
-* `ApiUtil.fetchSingleNotebook`
-* `ApiUtil.createNotebook`
-* `ApiUtil.editNotebook`
-* `ApiUtil.destroyNotebook`
+* `ApiUtil.fetchAllComments`
+* `ApiUtil.fetchSingleComment`
+* `ApiUtil.createComment`
+* `ApiUtil.editComment`
+* `ApiUtil.destroyComment`
 
 ## Gems/Libraries
