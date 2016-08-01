@@ -2,24 +2,20 @@
 
 **Bolded** components are associated with routes.
 
-(:exclamation: Remember, the bolded components are created by their
-associated routes, so the nesting of your bolded components must
-_**exactly**_ match the nesting of your routes.)
-
 * **App**
   * Navbar
-  * NotebooksIndex
+  * CommentsIndex
     * Search
-    * NotebookIndexItem
-    * NotebookForm
+    * CommentIndexItem
+    * CommentForm
   * **LoginForm**
   * **SignupForm**
   * **NotesIndex**
-    * NoteForm
-    * NoteIndexItem
-    * **NoteDetail**
-      * NoteTags
-      * NoteEditArea
+    * StoryForm
+    * StoryIndexItem
+    * **StoryDetail**
+      * StoryTags
+      * StoryEditArea
 
 
 ## Routes
@@ -27,11 +23,11 @@ _**exactly**_ match the nesting of your routes.)
 * **component:** `App` **path:** `/`
   * **component** `LoginForm` **path:** /login
   * **component** `SignupForm` **path:** /signup
-  * **component:** `NotesIndex` **path:** index
-  * **component:** `NotesIndex` **path:** `notebooks/:notebookId`
-    * **component:** `NoteDetail` **path:** `notes/:noteId`
-  * **component:** `NotesIndex` **path:** none
-    * **component:** `NoteDetail` **path:** `notes/:noteId`
+  * **component:** `StoriesIndex` **path:** index
+  * **component:** `StoriesIndex` **path:** `comments/:commentId`
+    * **component:** `StoryDetail` **path:** `stories/:storyId`
+  * **component:** `StoriesIndex` **path:** none
+    * **component:** `StoryDetail` **path:** `stories/:storyId`
 
-For Routes that have no `notebookId`, `NotesIndex` will render all
-notes.
+For Routes that have no `commentId`, `StoriesIndex` will render all
+stories.
