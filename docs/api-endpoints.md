@@ -19,34 +19,29 @@
 - `DELETE /api/session`
 - `GET /api/session`
 
-### Notes
+### Stories
 
-- `GET /api/notes`
-  - Notes index/search
-  - accepts `tag_name` query param to list notes by tag
+- `GET /api/stories`
+  - Stories index/search
+  - accepts `user_name` query param to list stories by user
   - accepts pagination params (if I get there)
-- `POST /api/notes`
-- `GET /api/notes/:id`
-- `PATCH /api/notes/:id`
-- `DELETE /api/notes/:id`
+- `POST /api/stories`
+- `GET /api/stories/:id`
+- `PATCH /api/stories/:id`
+- `DELETE /api/stories/:id`
 
-### Notebooks
+### Comments
 
-- `GET /api/notebooks`
-- `POST /api/notebooks`
-- `GET /api/notebooks/:id`
-- `PATCH /api/notebooks/:id`
-- `DELETE /api/notebooks/:id`
-- `GET /api/notebooks/:id/notes`
-  - index of all notes for a notebook
-  - accepts pagination params (if I get there)
+- `GET /api/comments`
+- `POST /api/comments`
+- `GET /api/comments/:id`
+- `PATCH /api/comments/:id`
+- `DELETE /api/comments/:id`
 
-### Tags
+### Likes/Favorites
 
-- A note's tags will be included in the note show template
-- `GET /api/tags`
+- A story's likes will be included in the story show template
+- `GET /api/likes`
   - includes query param for typeahead suggestions
-- `POST /api/notes/:note_id/tags`: add tag to note by name
-  - if note doesn't already exist, it will be created
-- `DELETE /api/notes/:note_id/tags/:tag_name`: remove tag from note by
-  name
+- `POST /api/stories/:story_id/likes`: add like to story
+- `DELETE /api/stories/:story_id/likes/:like_id`: remove like from story by like_id
