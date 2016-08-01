@@ -1,4 +1,4 @@
-# FresherNote
+# Nformd
 
 [Nformd][heroku]
 
