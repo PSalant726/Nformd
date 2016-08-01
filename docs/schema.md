@@ -1,45 +1,35 @@
 # Schema Information
 
-## notes
+## stories
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 title       | string    | not null
 body        | text      | not null
 author_id   | integer   | not null, foreign key (references users), indexed
-notebook_id | integer   | not null, foreign key (references notebooks), indexed
-archived    | boolean   | not null, default: false
 
-## notebooks
+## comments
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 author_id   | integer   | not null, foreign key (references users), indexed
-title       | string    | not null
-description | string    | 
+body        | text      | not null
+story_id    | integer   | not null, foreign key (references stories), indexed
 
-## reminders
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-user_id     | integer   | not null, foreign key (references users), indexed
-note_id     | string    | not null, foreign key (references notes), indexed
-date        | datetime  | not null
-type        | string    | not null
-prev_id     | integer   | foreign key (references reminders), indexed
-
-## tags
+## likes
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 name        | string    | not null
+story_id    | integer   | not null, foreign key (references stories), indexed
+author_id   | integer   | not null, foreign key (references users), indexed
 
-## taggings
+## followings (join table)
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-note_id     | integer   | not null, foreign key (references notes), indexed, unique [tag_id]
-tag_id      | integer   | not null, foreign key (references tags), indexed
+follower_id | integer   | not null, foreign key (references users), indexed
+user_id     | integer   | not null, foreign key (references users), indexed
 
 ## users
 column name     | data type | details
