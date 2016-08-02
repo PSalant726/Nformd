@@ -8,11 +8,12 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  email           :string
 #
 
 class User < ActiveRecord::Base
-  validates :username, :password_digest, :session_token, presence: true
-  validates :username, uniqueness: true
+  validates :username, :password_digest, :session_token, :email, presence: true
+  validates :username, :email, uniqueness: true
   validates :password, length: { minimum: 8, allow_nil: true }
 
   after_initialize :ensure_session_token
