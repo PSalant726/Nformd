@@ -33,7 +33,7 @@ const SignUpForm = React.createClass({
     if (this.state.password === this.state.confPassword){
       SessionActions.signup(this.state);
     } else {
-      // Throw error that confPassword doesn't match
+      // TODO: Throw error that confPassword doesn't match
     }
   },
 
