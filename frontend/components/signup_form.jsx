@@ -44,7 +44,7 @@ const SignUpForm = React.createClass({
   render(){
     let navLink;
     let thisPage;
-    if (this.formType() === "login"){
+    if (this.formType() === "login" || this.formType() === ""){
       navLink = <a href="#/signup">Create Account</a>;
       thisPage = "Sign In";
     } else {
