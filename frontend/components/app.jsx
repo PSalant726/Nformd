@@ -1,15 +1,28 @@
 const React = require('react');
-const Link = require('react-router').Link;
 const SessionStore = require('../stores/session_store');
 const SessionActions = require('../actions/session_actions');
+const Modal = require('react-modal');
+const FormModal = require('./form_modal');
 
 const App = React.createClass({
+  getInitialState(){
+    return({ modalOpen: false });
+  },
+
   componentDidMount(){
     SessionStore.addListener(this.forceUpdate.bind(this));
   },
 
   handleLogout(){
     SessionActions.logout();
+  },
+
+  handleClick(){
+    this.setState({ modalOpen: true });
+  },
+
+  closeModal(){
+    this.setState({ modalOpen: false });
   },
 
   greeting(){
@@ -20,12 +33,14 @@ const App = React.createClass({
           <input type="submit" value="Log Out" onClick={ this.handleLogout } />
         </hgroup>
       );
-    } else if (!["/login", "/signup"].includes(this.props.location.pathname)) {
+    } else {
       return(
         <nav>
-          <Link to="/login" activeClassName="current">Log In</Link>
-          &nbsp;or&nbsp;
-          <Link to="/signup" activeClassName="current">Create Account</Link>
+          <button
+            className="overlay-toggle"
+            onClick={ this.handleClick }>
+            Sign In / Sign Up
+          </button>
         </nav>
       );
     }
@@ -34,10 +49,15 @@ const App = React.createClass({
   render(){
     return(
       <div>
-        <header>
-          <Link to="/" className="header-link"><h1>Nformd</h1></Link>
+        <header className="header group">
+          <a href="/" className="header-link"><h1>Nformd</h1></a>
           { this.greeting() }
         </header>
+
+        <FormModal
+          modalOpen={ this.state.modalOpen }
+          closeModal={ this.closeModal }/>
+
         {this.props.children}
       </div>
     );

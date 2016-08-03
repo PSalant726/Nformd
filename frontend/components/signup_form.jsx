@@ -24,6 +24,7 @@ const SignUpForm = React.createClass({
 
   componentWillUnmount(){
     this.sessionListener.remove();
+    this.errorListener.remove();
   },
 
   redirectIfLoggedIn(){
@@ -43,12 +44,8 @@ const SignUpForm = React.createClass({
     }
   },
 
-  formType(){
-    return this.props.location.pathname.slice(1);
-  },
-
   errors(){
-    const errors = ErrorStore.errors(this.formType());
+    const errors = ErrorStore.errors("signup");
     const messages = errors.map((errorMsg, i) => {
       return <li key={ i }>{ errorMsg }</li>;
     });
@@ -56,20 +53,10 @@ const SignUpForm = React.createClass({
   },
 
   render(){
-    let navLink;
-    let thisPage;
-    if (this.formType() === "login" || this.formType() === ""){
-      navLink = <a href="#/signup">Create Account</a>;
-      thisPage = "Sign In";
-    } else {
-      navLink = <a href="#/login">Log In</a>;
-      thisPage = "Create Account";
-    }
-
     return(
       <div className="signup-form-container">
         <form className="signup-form" onSubmit={ this.handleSubmit }>
-          <h1>{ thisPage }</h1>
+          <h1>Sign Up</h1>
 
           { this.errors() }
 
@@ -94,8 +81,9 @@ const SignUpForm = React.createClass({
           <br></br>
 
           <br></br>
-          <input type="submit" value="Create Account" /> or { navLink }
+          <input type="submit" value="Sign Up" /> or
         </form>
+        <button onClick={ this.props.toggleForm } >Sign In</button>
       </div>
     );
   }
