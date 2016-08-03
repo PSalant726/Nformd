@@ -1,23 +1,16 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+const App = require('./components/app');
 const LoginForm = require('./components/login_form');
 const SignUpForm = require('./components/signup_form');
+const SessionActions = require('./actions/session_actions');
+const StoriesIndex = require('./components/stories_index');
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
-
-const App = React.createClass({
-  render(){
-    return(
-      <div>
-        {this.props.children}
-      </div>
-    );
-  }
-});
 
 const appRouter = (
   <Router history={ hashHistory }>
     <Route path="/" component={ App }>
-      <IndexRoute component={ LoginForm } />
+      <IndexRoute component={ StoriesIndex } />
       <Route path="/login" component={ LoginForm } />
       <Route path="/signup" component={ SignUpForm } />
     </Route>
@@ -25,5 +18,8 @@ const appRouter = (
 );
 
 document.addEventListener("DOMContentLoaded", function(){
+  if (window.currentUser) {
+    SessionActions.receiveCurrentUser(window.currentUser);
+  }
   ReactDOM.render(appRouter, document.getElementById('content'));
 });

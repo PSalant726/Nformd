@@ -1,8 +1,13 @@
 const React = require('react');
 const SessionActions = require('../actions/session_actions');
 const SessionStore = require('../stores/session_store');
+const ErrorStore = require('../stores/error_store');
 
 const SignUpForm = React.createClass({
+  contextTypes: {
+  		router: React.PropTypes.object.isRequired
+  },
+
   getInitialState(){
     return({
       email: "",
@@ -14,6 +19,7 @@ const SignUpForm = React.createClass({
 
   componentDidMount(){
     this.sessionListener = SessionStore.addListener(this.redirectIfLoggedIn);
+    this.errorListener = ErrorStore.addListener(this.forceUpdate.bind(this));
   },
 
   componentWillUnmount(){
@@ -41,6 +47,14 @@ const SignUpForm = React.createClass({
     return this.props.location.pathname.slice(1);
   },
 
+  errors(){
+    const errors = ErrorStore.errors(this.formType());
+    const messages = errors.map((errorMsg, i) => {
+      return <li key={ i }>{ errorMsg }</li>;
+    });
+    return <ul>{ messages }</ul>;
+  },
+
   render(){
     let navLink;
     let thisPage;
@@ -56,6 +70,8 @@ const SignUpForm = React.createClass({
       <div className="signup-form-container">
         <form className="signup-form" onSubmit={ this.handleSubmit }>
           <h1>{ thisPage }</h1>
+
+          { this.errors() }
 
           <input type="text"
             placeholder="Email Address"
