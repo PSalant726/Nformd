@@ -2,6 +2,7 @@ const React = require('react');
 const SessionActions = require('../actions/session_actions');
 const SessionStore = require('../stores/session_store');
 const ErrorStore = require('../stores/error_store');
+const FormModal = require('./form_modal');
 
 const LoginForm = React.createClass({
   contextTypes: {
@@ -41,12 +42,8 @@ const LoginForm = React.createClass({
     });
   },
 
-  formType(){
-    return this.props.location.pathname.slice(1);
-  },
-
   errors(){
-    const errors = ErrorStore.errors(this.formType());
+    const errors = ErrorStore.errors("login");
     const messages = errors.map((errorMsg, i) => {
       return <li key={ i }>{ errorMsg }</li>;
     });
@@ -54,21 +51,10 @@ const LoginForm = React.createClass({
   },
 
   render(){
-    let navLink;
-    let thisPage;
-
-    if (this.formType() === "login" || this.formType() === ""){
-      navLink = <a href="#/signup">Create Account</a>;
-      thisPage = "Sign In";
-    } else {
-      navLink = <a href="#/login">Log In</a>;
-      thisPage = "Create Account";
-    }
-
     return(
       <div className="login-form-container">
         <form className="login-form" onSubmit={ this.handleSubmit }>
-          <h1>{ thisPage }</h1>
+          <h1>Sign In</h1>
 
           { this.errors() }
 
@@ -84,8 +70,9 @@ const LoginForm = React.createClass({
           <br></br>
 
           <br></br>
-          <input type="submit" value="Sign In" /> or { navLink }
+          <input type="submit" value="Sign In" /> or
         </form>
+        <button onClick={ this.props.toggleForm } >Sign Up</button>
       </div>
     );
   }

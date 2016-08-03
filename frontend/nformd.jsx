@@ -5,6 +5,7 @@ const LoginForm = require('./components/login_form');
 const SignUpForm = require('./components/signup_form');
 const SessionActions = require('./actions/session_actions');
 const StoriesIndex = require('./components/stories_index');
+const Modal = require('react-modal');
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
 const appRouter = (
@@ -21,5 +22,6 @@ document.addEventListener("DOMContentLoaded", function(){
   if (window.currentUser) {
     SessionActions.receiveCurrentUser(window.currentUser);
   }
+  Modal.setAppElement(document.body);
   ReactDOM.render(appRouter, document.getElementById('content'));
 });

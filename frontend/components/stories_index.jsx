@@ -3,7 +3,7 @@ const React = require('react');
 const StoriesIndex = React.createClass({
   render(){
     return(
-      <div></div>
+      <div>Stories Index</div>
     );
   }
 });
