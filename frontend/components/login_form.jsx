@@ -1,8 +1,13 @@
 const React = require('react');
 const SessionActions = require('../actions/session_actions');
 const SessionStore = require('../stores/session_store');
+const ErrorStore = require('../stores/error_store');
 
 const LoginForm = React.createClass({
+  contextTypes: {
+  		router: React.PropTypes.object.isRequired
+  },
+
   getInitialState(){
     return({
       username: "",
@@ -12,10 +17,12 @@ const LoginForm = React.createClass({
 
   componentDidMount(){
     this.sessionListener = SessionStore.addListener(this.redirectIfLoggedIn);
+    this.errorListener = ErrorStore.addListener(this.forceUpdate.bind(this));
   },
 
   componentWillUnmount(){
     this.sessionListener.remove();
+    this.errorListener.remove();
   },
 
   redirectIfLoggedIn(){
@@ -28,16 +35,28 @@ const LoginForm = React.createClass({
 
   handleSubmit(event){
     event.preventDefault();
-    SessionActions.login(this.state);
+    SessionActions.login({
+      username: this.state.username,
+      password: this.state.password
+    });
   },
 
   formType(){
     return this.props.location.pathname.slice(1);
   },
 
+  errors(){
+    const errors = ErrorStore.errors(this.formType());
+    const messages = errors.map((errorMsg, i) => {
+      return <li key={ i }>{ errorMsg }</li>;
+    });
+    return <ul>{ messages }</ul>;
+  },
+
   render(){
     let navLink;
     let thisPage;
+
     if (this.formType() === "login" || this.formType() === ""){
       navLink = <a href="#/signup">Create Account</a>;
       thisPage = "Sign In";
@@ -51,9 +70,12 @@ const LoginForm = React.createClass({
         <form className="login-form" onSubmit={ this.handleSubmit }>
           <h1>{ thisPage }</h1>
 
+          { this.errors() }
+
           <input type="text"
             placeholder="Username"
-            onChange={ this.handleChange("username") } />
+            onChange={ this.handleChange("username") }
+            value={ this.state.username } />
           <br></br>
 
           <input type="password"

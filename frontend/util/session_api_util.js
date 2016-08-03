@@ -1,42 +1,38 @@
 const SessionApiUtil = {
-  signup(user, successCallback, errorCallback){
+  signup(user, success, error){
     $.ajax({
-      url: 'api/users',
+      url: '/api/users',
       method: 'POST',
-      data: { user: user },
-      success: function(response){
-        successCallback(response);
-      },
-      error: function(response){
-        errorCallback(response);
+      data: { user },
+      success,
+      error(xhr) {
+				const errors = xhr.responseJSON;
+				error("signup", errors);
       }
     });
   },
 
-  login(user, successCallback, errorCallback){
+  login(user, success, error){
     $.ajax({
-      url:'api/session',
+      url: '/api/session',
       method: 'POST',
-      data: { user: user },
-      success: function(response){
-        successCallback(response);
-      },
-      error: function(response){
-        errorCallback(response);
-      }
+      data: { user },
+      success,
+      error(xhr) {
+				const errors = xhr.responseJSON;
+				error("login", errors);
+			}
     });
   },
 
-  logout(successCallback, errorCallback){
+  logout(success){
     $.ajax({
-      url: 'api/session',
+      url: '/api/session',
       method: 'DELETE',
-      success: function(response){
-        successCallback(response);
-      },
-      error: function(response){
-        errorCallback(response);
-      }
+      success,
+      error: function () {
+			  console.log("Logout error in SessionApiUtil#logout");
+			}
     });
   }
 };
