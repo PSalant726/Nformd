@@ -31,6 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 # Use Faker to seed the database
+gem 'faker', '~> 1.6.6'
 
 group :production do
   gem 'rails_12factor'
@@ -43,7 +44,6 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'annotate'
-  gem 'faker', '~> 1.6.6'
 end
 
 group :development do
