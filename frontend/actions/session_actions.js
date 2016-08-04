@@ -5,17 +5,21 @@ const ErrorActions = require('./error_actions');
 const hashHistory = require('react-router').hashHistory;
 
 const SessionActions = {
-  signup(user){
+  signup(user, closeModal){
     SessionApiUtil.signup(
       user,
+      closeModal,
+      ErrorActions.clearErrors,
       SessionActions.receiveCurrentUser,
       ErrorActions.setErrors
     );
   },
 
-  login(user){
+  login(user, closeModal){
     SessionApiUtil.login(
       user,
+      closeModal,
+      ErrorActions.clearErrors,
       SessionActions.receiveCurrentUser,
       ErrorActions.setErrors
     );
