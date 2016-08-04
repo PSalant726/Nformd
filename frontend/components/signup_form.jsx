@@ -13,8 +13,7 @@ const SignUpForm = React.createClass({
       email: "",
       username: "",
       password: "",
-      confPassword: "",
-      confirmed: ""
+      confPassword: ""
     });
   },
 
@@ -36,7 +35,7 @@ const SignUpForm = React.createClass({
     return (event) => this.setState({ [property]: event.target.value });
   },
 
-  mismatch(){
+  checkPasswordConfMistmach(){
     if (this.state.password !== this.state.confPassword){
       return({
         border: '1px solid red',
@@ -87,13 +86,13 @@ const SignUpForm = React.createClass({
           <input type="password"
             placeholder="Password"
             onChange={ this.handleChange("password") }
-            style={ this.mismatch() } />
+            style={ this.checkPasswordConfMistmach() } />
           <br></br>
 
           <input type="password"
             placeholder="Confirm Password"
             onChange={ this.handleChange("confPassword") }
-            style={ this.mismatch() } />
+            style={ this.checkPasswordConfMistmach() } />
           <br></br>
 
           <br></br>
