@@ -39,8 +39,19 @@ const LoginForm = React.createClass({
     SessionActions.login({
       username: this.state.username,
       password: this.state.password
-    });
-    this.props.closeModal();
+    },
+      this.props.closeModal
+    );
+  },
+
+  guestSignin(event){
+    event.preventDefault();
+    SessionActions.login({
+      username: "Guest",
+      password: "password"
+    },
+      this.props.closeModal
+    );
   },
 
   errors(){
@@ -59,6 +70,7 @@ const LoginForm = React.createClass({
 
           { this.errors() }
 
+
           <input type="text"
             placeholder="Username"
             onChange={ this.handleChange("username") }
@@ -73,6 +85,12 @@ const LoginForm = React.createClass({
           <br></br>
           <input type="submit" value="Sign In" />
         </form>
+
+        <button
+          className="sign-up-button login-form"
+          onClick={ this.guestSignin } >
+          Sign In as Guest
+        </button>
 
         <button
           className="sign-up-button login-form"
