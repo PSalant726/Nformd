@@ -3,8 +3,8 @@ const AppDispatcher = require('../dispatcher/dispatcher');
 const SessionConstants = require('../constants/session_constants');
 
 let _currentUser = {};
-const SessionStore = new Store(AppDispatcher);
 
+const SessionStore = new Store(AppDispatcher);
 
 const _login = function(user){
   _currentUser = user;
