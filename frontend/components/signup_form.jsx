@@ -39,6 +39,7 @@ const SignUpForm = React.createClass({
     event.preventDefault();
     if (this.state.password === this.state.confPassword){
       SessionActions.signup(this.state);
+      this.props.closeModal();
     } else {
       // TODO: Throw error that confPassword doesn't match
     }
@@ -55,8 +56,8 @@ const SignUpForm = React.createClass({
   render(){
     return(
       <div className="signup-form-container">
-        <form className="signup-form" onSubmit={ this.handleSubmit }>
-          <h1>Sign Up</h1>
+        <form className="login-form" onSubmit={ this.handleSubmit }>
+          <h1>Create an Nformd Account</h1>
 
           { this.errors() }
 
@@ -81,9 +82,16 @@ const SignUpForm = React.createClass({
           <br></br>
 
           <br></br>
-          <input type="submit" value="Sign Up" /> or
+          <input
+            type="submit"
+            className="sign-up-button"
+            value="Sign Up" />
         </form>
-        <button onClick={ this.props.toggleForm } >Sign In</button>
+        <button
+          className="sign-in-button login-form"
+          onClick={ this.props.toggleForm } >
+          Sign In
+        </button>
       </div>
     );
   }
