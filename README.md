@@ -13,7 +13,7 @@ Nformd is a web application inspired by Medium that will be built using Ruby on 
 - [ ] A production README, replacing this README
 - [ ] Stories
   - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
+  - [x] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
 - [ ] Commenting on Stories
   - [ ] Smooth, bug-free navigation
@@ -64,9 +64,9 @@ Nformd is a web application inspired by Medium that will be built using Ruby on 
 
 **Objective:** Stories can be created, read, edited and destroyed through the API.
 
-- [ ] create `Story` model
-- [ ] seed the database with a small amount of test data
-- [ ] CRUD API for Stories (`StoriesController`)
+- [x] create `Story` model
+- [x] seed the database with a small amount of test data
+- [x] CRUD API for Stories (`StoriesController`)
 - [ ] jBuilder views for Stories
 - [ ] test out API interaction in the console.
 - implement each Story component, building out the flux loop as needed.
