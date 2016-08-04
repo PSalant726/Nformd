@@ -13,7 +13,8 @@ const SignUpForm = React.createClass({
       email: "",
       username: "",
       password: "",
-      confPassword: ""
+      confPassword: "",
+      confirmed: ""
     });
   },
 
@@ -35,6 +36,17 @@ const SignUpForm = React.createClass({
     return (event) => this.setState({ [property]: event.target.value });
   },
 
+  mismatch(){
+    if (this.state.password !== this.state.confPassword){
+      return({
+        border: '1px solid red',
+        borderRadius: '2px'
+      });
+    } else {
+      return({});
+    }
+  },
+
   handleSubmit(event){
     event.preventDefault();
     SessionActions.signup({
@@ -48,9 +60,6 @@ const SignUpForm = React.createClass({
 
   errors(){
     let errors = ErrorStore.errors("signup");
-    if (this.state.password !== this.state.confPassword){
-      errors.push("Password not confirmed!");
-    }
     const messages = errors.map((errorMsg, i) => {
       return <li key={ i }>{ errorMsg }</li>;
     });
@@ -77,12 +86,14 @@ const SignUpForm = React.createClass({
 
           <input type="password"
             placeholder="Password"
-            onChange={ this.handleChange("password") } />
+            onChange={ this.handleChange("password") }
+            style={ this.mismatch() } />
           <br></br>
 
           <input type="password"
             placeholder="Confirm Password"
-            onChange={ this.handleChange("confPassword") } />
+            onChange={ this.handleChange("confPassword") }
+            style={ this.mismatch() } />
           <br></br>
 
           <br></br>
