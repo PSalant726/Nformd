@@ -8,8 +8,8 @@
 
 Nformd is a web application inspired by Medium that will be built using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
 
-- [ ] Hosting on Heroku
-- [ ] New account creation, login, and guest/demo login
+- [x] Hosting on Heroku
+- [x] New account creation, login, and guest/demo login
 - [ ] A production README, replacing this README
 - [ ] Stories
   - [ ] Smooth, bug-free navigation
@@ -48,17 +48,17 @@ Nformd is a web application inspired by Medium that will be built using Ruby on 
 
 **Objective:** Functioning rails project with front-end Authentication
 
-- [ ] create new project
-- [ ] create `User` model
-- [ ] authentication backend setup
-- [ ] create `StaticPages` controller and root view
-- [ ] set up webpack & flux scaffold with skeleton files
-- [ ] setup `APIUtil` to interact with the API
-- [ ] set up flux cycle for front-end authentication
-- [ ] user signup/sign-in components
-- [ ] blank landing component after sign-in
-- [ ] style sign-in/signup components
-- [ ] seed users
+- [x] create new project
+- [x] create `User` model
+- [x] authentication backend setup
+- [x] create `StaticPages` controller and root view
+- [x] set up webpack & flux scaffold with skeleton files
+- [x] setup `APIUtil` to interact with the API
+- [x] set up flux cycle for front-end authentication
+- [x] user signup/sign-in components
+- [x] blank landing component after sign-in
+- [x] style sign-in/signup components
+- [x] seed users
 
 ### [Phase 2][phase-two]: Stories Model, API, and components (2 days, W1 F 6pm)
 
