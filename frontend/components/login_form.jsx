@@ -40,6 +40,7 @@ const LoginForm = React.createClass({
       username: this.state.username,
       password: this.state.password
     });
+    this.props.closeModal();
   },
 
   errors(){
@@ -47,14 +48,14 @@ const LoginForm = React.createClass({
     const messages = errors.map((errorMsg, i) => {
       return <li key={ i }>{ errorMsg }</li>;
     });
-    return <ul>{ messages }</ul>;
+    return <ul className="sign-in-errors">{ messages }</ul>;
   },
 
   render(){
     return(
       <div className="login-form-container">
         <form className="login-form" onSubmit={ this.handleSubmit }>
-          <h1>Sign In</h1>
+          <h1>Sign in to Nformd to connect with voices and perspectives that matter.</h1>
 
           { this.errors() }
 
@@ -70,9 +71,14 @@ const LoginForm = React.createClass({
           <br></br>
 
           <br></br>
-          <input type="submit" value="Sign In" /> or
+          <input type="submit" value="Sign In" />
         </form>
-        <button onClick={ this.props.toggleForm } >Sign Up</button>
+
+        <button
+          className="sign-up-button login-form"
+          onClick={ this.props.toggleForm } >
+          Sign Up
+        </button>
       </div>
     );
   }

@@ -20,16 +20,24 @@ const FormModal = React.createClass({
   },
 
   render(){
-    let formType = this.state.login ? <LoginForm toggleForm={ this.toggleForm } /> : <SignupForm toggleForm={ this.toggleForm } />;
+    let formType;
+    if (this.state.login) {
+      formType = <LoginForm closeModal={ this.props.closeModal } toggleForm={ this.toggleForm } />;
+    } else {
+      formType = <SignupForm closeModal={ this.props.closeModal } toggleForm={ this.toggleForm } />;
+    }
 
     return(
       <div>
+
         <Modal
           isOpen={ this.props.modalOpen }
           onRequestClose={ this.props.closeModal }
           style={ ModalStyle }>
-          <button onClick={ this.props.closeModal }>Close</button>
+
+          <div className="modal-logo group"><h1>Nformd</h1></div>
           { formType }
+
         </Modal>
       </div>
     );

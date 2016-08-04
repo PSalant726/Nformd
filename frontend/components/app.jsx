@@ -30,14 +30,17 @@ const App = React.createClass({
       return(
         <hgroup>
           <h2>Welcome, { SessionStore.currentUser().username }!</h2>
-          <input type="submit" value="Log Out" onClick={ this.handleLogout } />
+          <input
+            type="submit"
+            value="Log Out"
+            onClick={ this.handleLogout } />
         </hgroup>
       );
     } else {
       return(
         <nav>
           <button
-            className="overlay-toggle"
+            className="modal-toggle"
             onClick={ this.handleClick }>
             Sign In / Sign Up
           </button>
