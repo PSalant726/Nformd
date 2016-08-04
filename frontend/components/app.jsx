@@ -28,9 +28,10 @@ const App = React.createClass({
   greeting(){
     if (SessionStore.isUserLoggedIn()){
       return(
-        <hgroup>
+        <hgroup className="logged-in-greeting">
           <h2>Welcome, { SessionStore.currentUser().username }!</h2>
           <input
+            className="log-out-button"
             type="submit"
             value="Log Out"
             onClick={ this.handleLogout } />
