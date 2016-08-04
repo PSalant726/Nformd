@@ -1,10 +1,14 @@
 const SessionApiUtil = {
-  signup(user, success, error){
+  signup(user, closeModal, clearErrors, success, error){
     $.ajax({
       url: '/api/users',
       method: 'POST',
       data: { user },
-      success,
+      success: function(response){
+        success(response);
+        closeModal();
+        clearErrors();
+      },
       error(xhr) {
 				const errors = xhr.responseJSON;
 				error("signup", errors);
@@ -12,12 +16,16 @@ const SessionApiUtil = {
     });
   },
 
-  login(user, success, error){
+  login(user, closeModal, clearErrors, success, error){
     $.ajax({
       url: '/api/session',
       method: 'POST',
       data: { user },
-      success,
+      success: function(response){
+        success(response);
+        closeModal();
+        clearErrors();
+      },
       error(xhr) {
 				const errors = xhr.responseJSON;
 				error("login", errors);

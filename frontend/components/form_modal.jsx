@@ -1,6 +1,5 @@
 const React = require('react');
 const Modal = require('react-modal');
-const ModalStyle = require('../../app/assets/javascripts/modal_style');
 const LoginForm = require('./login_form');
 const SignupForm = require('./signup_form');
 
@@ -19,6 +18,36 @@ const FormModal = React.createClass({
     }
   },
 
+  styleModal(){
+    return({
+      overlay : {
+        backgroundColor : 'rgba(0,0,0,.6)',
+        bottom          : 0,
+        left            : 0,
+        position        : 'fixed',
+        right           : 0,
+        top             : 0,
+        zIndex          : 10
+      },
+      content : {
+        border          : '1px solid #ccc',
+        borderRadius    : '3px',
+        left            : '50%',
+        marginBottom    : '18px',
+        marginTop       : '18px',
+        padding         : '0px',
+        position        : 'absolute',
+        top             : '50%',
+        transform       : 'translate(-50%, -50%)',
+        maxHeight       : '820px',
+        maxWidth        : '520px',
+        minHeight       : '800px',
+        minWidth        : '520px',
+        zIndex          : 11,
+      }
+    });
+  },
+
   render(){
     let formType;
     if (this.state.login) {
@@ -33,7 +62,7 @@ const FormModal = React.createClass({
         <Modal
           isOpen={ this.props.modalOpen }
           onRequestClose={ this.props.closeModal }
-          style={ ModalStyle }>
+          style={ this.styleModal() }>
 
           <div className="modal-logo group"><h1>Nformd</h1></div>
           { formType }

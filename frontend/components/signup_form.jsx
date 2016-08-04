@@ -37,20 +37,24 @@ const SignUpForm = React.createClass({
 
   handleSubmit(event){
     event.preventDefault();
-    if (this.state.password === this.state.confPassword){
-      SessionActions.signup(this.state);
-      this.props.closeModal();
-    } else {
-      // TODO: Throw error that confPassword doesn't match
-    }
+    SessionActions.signup({
+      email: this.state.email,
+      username: this.state.username,
+      password: this.state.password
+    },
+      this.props.closeModal
+    );
   },
 
   errors(){
-    const errors = ErrorStore.errors("signup");
+    let errors = ErrorStore.errors("signup");
+    if (this.state.password !== this.state.confPassword){
+      errors.push("Password not confirmed!");
+    }
     const messages = errors.map((errorMsg, i) => {
       return <li key={ i }>{ errorMsg }</li>;
     });
-    return <ul>{ messages }</ul>;
+    return <ul className="sign-in-errors">{ messages }</ul>;
   },
 
   render(){
@@ -87,6 +91,7 @@ const SignUpForm = React.createClass({
             className="sign-up-button"
             value="Sign Up" />
         </form>
+
         <button
           className="sign-in-button login-form"
           onClick={ this.props.toggleForm } >

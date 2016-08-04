@@ -140,11 +140,13 @@ input[type="submit"] {
 .login-form > input[type="submit"] {
   background-color: white;
   border-radius: 5px;
-  padding: 10px 107px;
   margin-left: 130px;
   margin-bottom: 25px;
   border: 1px solid #02b875;
   color: #00ab6b;
+  width: 270px;
+  height: 40px;
+  text-align: center;
 }
 
 .login-form > input[type="submit"]:hover {
@@ -155,11 +157,13 @@ input[type="submit"] {
 .sign-up-button {
   background-color: white;
   border-radius: 5px;
-  padding: 10px 104px;
   margin-left: 130px;
   margin-bottom: 25px;
   border: 1px solid #02b875;
   color: #00ab6b;
+  width: 270px;
+  height: 40px;
+  text-align: center;
 }
 
 .sign-up-button:hover {
@@ -170,11 +174,13 @@ input[type="submit"] {
 .sign-in-button {
   background-color: white;
   border-radius: 5px;
-  padding: 10px 107px;
   margin-left: 130px;
   margin-bottom: 25px;
   border: 1px solid #02b875;
   color: #00ab6b;
+  width: 270px;
+  height: 40px;
+  text-align: center;
 }
 
 .sign-in-button:hover {
