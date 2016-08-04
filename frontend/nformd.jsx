@@ -2,7 +2,7 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const App = require('./components/app');
 const SessionActions = require('./actions/session_actions');
-const StoriesIndex = require('./components/stories_index');
+const StoriesIndex = require('./components/stories/stories_index');
 const Modal = require('react-modal');
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 

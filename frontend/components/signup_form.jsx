@@ -59,6 +59,9 @@ const SignUpForm = React.createClass({
 
   errors(){
     let errors = ErrorStore.errors("signup");
+    // if (this.state.password !== this.state.confPassword){
+    //   errors.push("Password and Confirm Password fields must match");
+    // }
     const messages = errors.map((errorMsg, i) => {
       return <li key={ i }>{ errorMsg }</li>;
     });
