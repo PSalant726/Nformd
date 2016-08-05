@@ -87,13 +87,13 @@ const LoginForm = React.createClass({
         </form>
 
         <button
-          className="sign-up-button login-form"
+          className="sign-in-button login-form"
           onClick={ this.guestSignin } >
           Sign In as Guest
         </button>
 
         <button
-          className="sign-up-button login-form"
+          className="sign-in-button login-form"
           onClick={ this.props.toggleForm } >
           Sign Up
         </button>
