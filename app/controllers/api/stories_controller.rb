@@ -20,11 +20,15 @@ class Api::StoriesController < ApplicationController
   end
 
   def index
-    @stories = Story.all
+    @stories = Story.all.includes(:author)
   end
 
   def new
     @story = Story.new
+  end
+
+  def show
+    @story = Story.find(params[:id])
   end
 
   def update
