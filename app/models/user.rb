@@ -8,7 +8,9 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  email           :string
+#  email           :string           not null
+#  fname           :string
+#  lname           :string
 #
 
 class User < ActiveRecord::Base
