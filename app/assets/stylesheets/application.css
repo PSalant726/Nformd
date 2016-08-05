@@ -127,6 +127,7 @@ input[type="submit"] {
   font-size: 18px;
   margin: 30px 85px;
   color: #656565;
+  width: 370px;
 }
 
 .login-form > input[type="text"], input[type="password"] {
