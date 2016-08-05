@@ -60,7 +60,7 @@ const UserMenu = React.createClass({
                 <li
                   className="user-menu-link personal-link"
                   onClick={ this.handleLogout }>
-                  Log Out
+                  Sign out
                 </li>
               </a>
 
