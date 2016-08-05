@@ -6,23 +6,25 @@ const StoryStore = new Store(AppDispatcher);
 
 let _stories = {};
 
-resetStories = function (stories) {
+const resetStories = function (stories) {
   _stories = {};
   stories.forEach(story => {
     _stories[story.id] = story;
   });
 };
 
-setStory = function (story) {
+const setStory = function (story) {
   _stories[story.id] = story;
 };
 
-removeStory = function (story) {
+const removeStory = function (story) {
   delete _story[story.id];
 };
 
 StoryStore.all = function(){
-  return Object.assign({}, _stories);
+  return Object.keys(_stories).map(storyId => {
+    return _stories[storyId];
+  });
 };
 
 StoryStore.find = function (id) {
@@ -33,15 +35,15 @@ StoryStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
     case StoryConstants.STORIES_RECIEVED:
       resetStories(payload.stories);
-      StoriesStore.__emitChange();
+      StoryStore.__emitChange();
       break;
     case StoryConstants.STORY_RECEIVED:
       setStory(payload.story);
-      StoriesStore.__emitChange();
+      StoryStore.__emitChange();
       break;
     case StoryConstants.STORY_REMOVED:
       removeStory(payload.story);
-      StoriesStore.__emitChange();
+      StoryStore.__emitChange();
       break;
   }
 };

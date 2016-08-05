@@ -23,7 +23,7 @@ const StoryActions = {
     StoryApiUtil.deleteStory(id, this.removeStory);
   },
 
-  receiveAllStories(story){
+  receiveAllStories(stories){
     AppDispatcher.dispatch({
       actionType: StoryConstants.STORIES_RECIEVED,
       stories: stories
