@@ -17,3 +17,4 @@ bundle.js
 bundle.js.map
 .DS_Store
 npm-debug.log
+.byebug_history
