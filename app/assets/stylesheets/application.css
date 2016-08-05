@@ -58,6 +58,7 @@ button {
 }
 
 button,
+a,
 input[type="submit"] {
   cursor: pointer;
 }
@@ -256,13 +257,40 @@ input[type="submit"] {
 
 .user-menu-content > li {
   text-align: left;
-  width: 100%;
   line-height: 1.4;
   white-space: nowrap;
   font-size: 16px;
   font-weight: 300;
+  padding: 7px 25px 7px 0;
 }
 
-.user-menu-content > li > * {
+.user-menu-link {
+  text-align: left;
+  line-height: 1.4;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(0,0,0,.6);
+  transition: .1s background-color,.1s border-color,.1s color,.1s fill;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
   padding: 7px 25px;
+}
+
+.user-menu-link:hover {
+  color: rgba(0,0,0,.8);
+}
+
+.user-menu-list-separator {
+  border-top: solid 1px rgba(0,0,0,.05);
+  margin: 10px 0;
+  padding-bottom: 0!important;
+  padding-top: 0!important;
+}
+
+.personal-link {
+  font-size: 14px;
+}
+
+.rem-pad {
+  padding: 0!important;
 }
