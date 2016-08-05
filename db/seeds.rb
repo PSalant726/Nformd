@@ -27,6 +27,6 @@ Story.delete_all
   Story.create(
     title: Faker::Book.title,
     body: Faker::Hipster.paragraphs(4).join("\n\n"),
-    author_id: User.all.sample.id
+    author_id: User.where.not(username: "Guest").sample.id
   )
 end
