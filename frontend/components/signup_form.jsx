@@ -106,7 +106,7 @@ const SignUpForm = React.createClass({
         </form>
 
         <button
-          className="sign-in-button login-form"
+          className="sign-up-button login-form"
           onClick={ this.props.toggleForm } >
           Sign In
         </button>
