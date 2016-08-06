@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require stories
  */
 
 
@@ -213,13 +214,14 @@ input[type="submit"] {
   color: #1c9963;
 }
 
-.avatar-image-placeholder {
+.nav-avatar-image-placeholder {
   height: 30px;
   width: 30px;
   background-color: red;
   border-radius: 50%;
   float: right;
   margin-bottom: -1px;
+  cursor: pointer;
 }
 
 .user-menu-outer {
