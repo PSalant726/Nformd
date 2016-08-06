@@ -72,7 +72,7 @@ Nformd is a web application inspired by Medium that will be built using Ruby on 
 - implement each Story component, building out the flux loop as needed.
   - [x] `Story Flux Loop`
   - [x] `StoriesIndex`
-  - [ ] `StoryIndexItem`
+  - [x] `StoryIndexItem`
   - [ ] `StoryForm`
 - [ ] save Stories to the DB when the form loses focus or is left idle after editing.
 - [ ] style Stories components
