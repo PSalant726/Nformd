@@ -41,7 +41,7 @@ const FormModal = React.createClass({
         right           : 'auto',
         top             : '50%',
         transform       : 'translate(-50%, -50%)',
-        maxWidth        : '60rem',
+        maxWidth        : '34rem',
         minHeight       : '10rem',
         minWidth        : '20rem',
         width           : 'auto',
