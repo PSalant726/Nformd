@@ -16,12 +16,27 @@ const StoryIndexItem = React.createClass({
 
   render(){
     return(
-      <li>
-        <p>{ this.author() }</p>
-        <TimeAgo date={ this.props.story.created_at } />
-        <h1>{ this.props.story.title }</h1>
-        <p>{ this.props.story.body }</p>
-        <br></br>
+      <li className="story">
+        <div className="group story-details-container">
+          <div className="story-details-image">
+            <div className="image-container">
+              <a className="story-avatar-image-placeholder" />
+            </div>
+            <div className="story-details">
+              <a className="story-author">{ this.author() }</a>
+              <TimeAgo
+                date={ this.props.story.created_at }
+                className="story-timeago" />
+              <span className="divider" />
+              <p className="story-readtime">
+                { this.props.story.read_time }
+              </p>
+            </div>
+          </div>
+        </div>
+        <a className="story-title">{ this.props.story.title }</a>
+        <a className="story-preview">{ this.props.story.preview }</a>
+        <a className="story-readmore">Read more...</a>
       </li>
     );
   }

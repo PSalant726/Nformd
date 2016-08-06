@@ -19,5 +19,18 @@ class Story < ActiveRecord::Base
     foreign_key: :author_id,
     primary_key: :id
   )
-  
+
+  def read_time
+    (self.body.length / 275).to_s + " min read"
+  end
+
+  def preview
+    prev = self.body.split(" ").first(25)
+    prev.pop
+    if self.body.split(" ").length <= 40
+      return prev.join(" ")
+    else
+      return prev.join(" ") + "..."
+    end
+  end
 end
