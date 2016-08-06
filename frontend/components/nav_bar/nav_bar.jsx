@@ -37,7 +37,7 @@ const NavBar = React.createClass({
     if (SessionStore.isUserLoggedIn()){
       return(
         <hgroup
-          className="avatar-image-placeholder"
+          className="nav-avatar-image-placeholder"
           onClick={ this.menuToggle }>
 
           <UserMenu menuVisible={ this.state.menuVisible } />
