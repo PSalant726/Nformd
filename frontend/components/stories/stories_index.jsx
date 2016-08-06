@@ -31,10 +31,12 @@ const StoriesIndex = React.createClass({
     });
 
     return(
-      <div className="story-index">
-        <ul>
-          { storyIndexItems }
-        </ul>
+      <div className="background">
+        <div className="story-index">
+          <ul className="story-list">
+            { storyIndexItems }
+          </ul>
+        </div>
       </div>
     );
   }
