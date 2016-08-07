@@ -27,7 +27,7 @@ class Story < ActiveRecord::Base
   def preview
     prev = self.body.split(" ").first(25)
     prev.pop
-    if self.body.split(" ").length <= 40
+    if self.body.split(" ").length <= 25
       return prev.join(" ")
     else
       return prev.join(" ") + "..."
