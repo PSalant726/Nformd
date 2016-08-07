@@ -15,47 +15,35 @@ const UserMenu = React.createClass({
           <div className="menu-arrow" />
           <div className="user-menu-inner">
             <ul className="user-menu-content">
-
               <a>
                 <li className="user-menu-link">New story</li>
               </a>
-
               <a>
                 <li className="user-menu-link">Drafts</li>
               </a>
-
               <a>
                 <li className="user-menu-link">Stories</li>
               </a>
-
               <a>
                 <li className="user-menu-link">Stats</li>
               </a>
-
               <li className="user-menu-list-separator" />
-
               <a>
                 <li className="user-menu-link">Bookmarks</li>
               </a>
-
               <a>
                 <li className="user-menu-link">Publications</li>
               </a>
-
               <a>
                 <li className="user-menu-link">Follow your interests</li>
               </a>
-
               <li className="user-menu-list-separator" />
-
               <a className="rem-pad">
                 <li className="user-menu-link personal-link">Profile</li>
               </a>
-
               <a className="rem-pad">
                 <li className="user-menu-link personal-link">Settings</li>
               </a>
-
               <a className="rem-pad">
                 <li
                   className="user-menu-link personal-link"
@@ -63,7 +51,6 @@ const UserMenu = React.createClass({
                   Sign out
                 </li>
               </a>
-
             </ul>
           </div>
         </div>
