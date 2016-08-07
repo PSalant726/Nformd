@@ -46,12 +46,13 @@ const NavBar = React.createClass({
       );
     } else {
       return(
-        <nav>
+        <nav className="nav-buttons">
           <button
             className="modal-toggle"
             onClick={ this.handleClick }>
-            Sign In / Sign Up
+            Sign in / Sign up
           </button>
+          <div className="nav-search"></div>
         </nav>
       );
     }
