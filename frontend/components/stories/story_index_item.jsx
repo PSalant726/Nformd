@@ -1,5 +1,6 @@
 const React = require('react');
 const TimeAgo = require('react-timeago').default;
+const Link = require('react-router').Link;
 
 const StoryIndexItem = React.createClass({
   author(){
@@ -16,7 +17,7 @@ const StoryIndexItem = React.createClass({
 
   render(){
     return(
-      <li className="story">
+      <li className="listed-story">
         <div className="group story-details-container">
           <div className="story-details-image">
             <div className="image-container">
@@ -34,9 +35,15 @@ const StoryIndexItem = React.createClass({
             </div>
           </div>
         </div>
-        <a className="story-title">{ this.props.story.title }</a>
-        <a className="story-preview">{ this.props.story.preview }</a>
-        <a className="story-readmore">Read more...</a>
+        <Link
+          to={ `/stories/${this.props.story.id}` }
+          className="story-title">{ this.props.story.title }</Link>
+        <Link
+          to={ `/stories/${this.props.story.id}` }
+          className="story-preview">{ this.props.story.preview }</Link>
+        <Link
+          to={ `/stories/${this.props.story.id}` }
+          className="story-readmore">Read more...</Link>
       </li>
     );
   }
