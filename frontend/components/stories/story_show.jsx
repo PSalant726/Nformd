@@ -12,7 +12,9 @@ const StoryShow = React.createClass({
       story: {
         created_at: "",
         author: {
-          username: ""
+          username: "",
+          bio: "",
+          bio_preview: ""
         }
       }
     });
@@ -62,20 +64,30 @@ const StoryShow = React.createClass({
     return(
       <div className="full-story">
         <div className="show-details-image">
-          <div className="">
+          <div className="image-container">
             <a className="show-avatar-image-placeholder" />
           </div>
           <div className="show-details">
             <a className="show-author">{ author }</a>
-            { timeAgo }
-            <span className="divider" />
-            <p className="show-readtime">
-              { this.state.story.read_time }
+            <p className="show-author-bio">
+              { this.state.story.author.bio_preview }
             </p>
+            <div className="show-posted-readtime">
+              { timeAgo }
+              <span className="divider" />
+              <p className="show-readtime">
+                { this.state.story.read_time }
+              </p>
+            </div>
           </div>
         </div>
-        <h1 className="show-title">{ this.state.story.title }</h1>
-        <p>{ this.state.story.body }</p>
+        <div className="show-story-container">
+          <h1 className="show-title">{ this.state.story.title }</h1>
+          <p className="show-body">{ this.state.story.body }</p>
+        </div>
+        <div className="show-comments-section">
+          Comments will go here!
+        </div>
       </div>
     );
   }
