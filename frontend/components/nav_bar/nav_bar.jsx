@@ -61,7 +61,10 @@ const NavBar = React.createClass({
     return(
       <div>
         <header className="header group">
-          <a href="/" className="header-link"><h1>Nformd</h1></a>
+          <a href="/">
+            <div className="logo-white-background"></div>
+            <div className="header-link"><h1>Nformd</h1></div>
+          </a>
           { this.userTools() }
         </header>
 

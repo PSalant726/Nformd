@@ -66,7 +66,7 @@ const LoginForm = React.createClass({
     return(
       <div className="login-form-container">
         <form className="login-form" onSubmit={ this.handleSubmit }>
-          <h1>Sign in to Nformd to connect with voices and perspectives that matter.</h1>
+          <h1>Sign in to Nformd and build a more powerful electorate.</h1>
 
           { this.errors() }
 
