@@ -57,12 +57,11 @@ class User < ActiveRecord::Base
 
   def bio_preview
     if self.bio
-      prev = self.bio.split(" ").first(20)
-      prev.pop
-      if self.bio.split(" ").length <= 20
+      prev = self.bio.split(" ")
+      if self.bio.split(" ").length <= 12
         return prev.join(" ")
       else
-        return prev.join(" ") + "..."
+        return prev.first(12).join(" ") + "..."
       end
     end
   end
