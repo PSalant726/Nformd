@@ -65,8 +65,10 @@ const FormModal = React.createClass({
           isOpen={ this.props.modalOpen }
           onRequestClose={ this.props.closeModal }
           style={ this.styleModal() }>
-
-          <div className="modal-logo group"><h1>Nformd</h1></div>
+          <div className="modal-logo group">
+            <div className="modal-logo-image"></div>
+            <h1>Nformd</h1>
+          </div>
           { formType }
 
         </Modal>
