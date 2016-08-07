@@ -133,7 +133,7 @@ input[type="submit"] {
 }
 
 .modal-logo-image {
-  background-image: url('logo.png');
+  background-image: asset-url('logo.png');
   height: 100px;
   width: 110px;
   background-size: 110px 100px;
