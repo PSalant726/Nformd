@@ -11,6 +11,7 @@
 #  email           :string           not null
 #  fname           :string
 #  lname           :string
+#  bio             :text
 #
 
 require 'test_helper'
