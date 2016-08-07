@@ -11,6 +11,7 @@
 #  email           :string           not null
 #  fname           :string
 #  lname           :string
+#  bio             :text
 #
 
 class User < ActiveRecord::Base
@@ -52,6 +53,18 @@ class User < ActiveRecord::Base
     self.session_token = User.generate_session_token
     self.save
     self.session_token
+  end
+
+  def bio_preview
+    if self.bio
+      prev = self.bio.split(" ").first(20)
+      prev.pop
+      if self.bio.split(" ").length <= 20
+        return prev.join(" ")
+      else
+        return prev.join(" ") + "..."
+      end
+    end
   end
 
   private
