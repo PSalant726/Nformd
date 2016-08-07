@@ -8,8 +8,14 @@ const StoryShow = React.createClass({
   //  Going from the StoriesIndex to the StoryShow page is fine, but you cannot
   //  go directly to the StoryShow page without encountering an error.
   getInitialState(){
-    const thisStory = StoryStore.find(this.props.params.id);
-    return ({ story: thisStory ? thisStory : {} });
+    return ({
+      story: {
+        created_at: "",
+        author: {
+          username: ""
+        }
+      }
+    });
   },
 
   componentDidMount(){
@@ -22,10 +28,37 @@ const StoryShow = React.createClass({
   },
 
   handleChange(){
-    this.setState({ story: StoryStore.find(this.props.params.id) });
+    const thisStory = StoryStore.find(this.props.params.id);
+    this.setState({ story: thisStory ? thisStory : {} });
+  },
+
+  author(username, fname, lname){
+    if (fname && lname){
+      return fname + " " + lname;
+    } else {
+      return username;
+    }
   },
 
   render(){
+    let timeAgo;
+    if (this.state.story.created_at === ""){
+      timeAgo = "";
+    } else {
+      timeAgo = <TimeAgo date={ this.state.story.created_at } className="show-timeago" />;
+    }
+
+    let author;
+    if (this.state.story.author.username === ""){
+      author = "";
+    } else {
+      author = this.author(
+        this.state.story.author.username,
+        this.state.story.author.fname,
+        this.state.story.author.lname
+      );
+    }
+
     return(
       <div className="full-story">
         <div className="show-details-image">
@@ -33,10 +66,8 @@ const StoryShow = React.createClass({
             <a className="show-avatar-image-placeholder" />
           </div>
           <div className="show-details">
-            <a className="show-author">{ this.state.story.author.username }</a>
-            <TimeAgo
-              date={ this.state.story.created_at }
-              className="show-timeago" />
+            <a className="show-author">{ author }</a>
+            { timeAgo }
             <span className="divider" />
             <p className="show-readtime">
               { this.state.story.read_time }

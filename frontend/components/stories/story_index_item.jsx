@@ -3,15 +3,11 @@ const TimeAgo = require('react-timeago').default;
 const Link = require('react-router').Link;
 
 const StoryIndexItem = React.createClass({
-  author(){
-    if(this.props.story.author.fname){
-      if(this.props.story.author.lname){
-        return this.props.story.author.fname + " " + this.props.story.author.lname;
-      } else {
-        return this.props.story.author.fname;
-      }
+  author(username, fname, lname){
+    if (fname && lname){
+      return fname + " " + lname;
     } else {
-      return this.props.story.author.username;
+      return username;
     }
   },
 
@@ -24,7 +20,15 @@ const StoryIndexItem = React.createClass({
               <a className="story-avatar-image-placeholder" />
             </div>
             <div className="story-details">
-              <a className="story-author">{ this.author() }</a>
+              <a className="story-author">
+                {
+                  this.author(
+                    this.props.story.author.username,
+                    this.props.story.author.fname,
+                    this.props.story.author.lname
+                  )
+                }
+              </a>
               <TimeAgo
                 date={ this.props.story.created_at }
                 className="story-timeago" />
@@ -37,13 +41,19 @@ const StoryIndexItem = React.createClass({
         </div>
         <Link
           to={ `/stories/${this.props.story.id}` }
-          className="story-title">{ this.props.story.title }</Link>
+          className="story-title">
+          { this.props.story.title }
+        </Link>
         <Link
           to={ `/stories/${this.props.story.id}` }
-          className="story-preview">{ this.props.story.preview }</Link>
+          className="story-preview">
+          { this.props.story.preview }
+        </Link>
         <Link
           to={ `/stories/${this.props.story.id}` }
-          className="story-readmore">Read more...</Link>
+          className="story-readmore">
+          Read more...
+        </Link>
       </li>
     );
   }
