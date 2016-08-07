@@ -4,6 +4,8 @@ const SessionActions = require('../../actions/session_actions');
 const Modal = require('react-modal');
 const FormModal = require('../form_modal');
 const UserMenu = require('./user_menu');
+const Link = require('react-router').Link;
+const hashHistory = require('react-router').hashHistory;
 
 const NavBar = React.createClass({
   getInitialState(){
@@ -36,13 +38,20 @@ const NavBar = React.createClass({
   userTools(){
     if (SessionStore.isUserLoggedIn()){
       return(
-        <hgroup
-          className="nav-avatar-image-placeholder"
-          onClick={ this.menuToggle }>
-
-          <UserMenu menuVisible={ this.state.menuVisible } />
-
-        </hgroup>
+        <div className="nav">
+          <Link
+            to={ '/stories/new' }
+            className="new-story">
+            Write a story
+          </Link>
+          <div className="logged-in-nav-search"></div>
+          <div className="notfications-button"></div>
+          <hgroup
+            className="nav-avatar-image-placeholder"
+            onClick={ this.menuToggle }>
+            <UserMenu menuVisible={ this.state.menuVisible } />
+          </hgroup>
+        </div>
       );
     } else {
       return(
@@ -52,7 +61,7 @@ const NavBar = React.createClass({
             onClick={ this.handleClick }>
             Sign in / Sign up
           </button>
-          <div className="nav-search"></div>
+          <div className="logged-out-nav-search"></div>
         </nav>
       );
     }
@@ -62,10 +71,10 @@ const NavBar = React.createClass({
     return(
       <div>
         <header className="header group">
-          <a href="/">
+          <Link to={ "/" }>
             <div className="logo-white-background"></div>
             <div className="header-link"><h1>Nformd</h1></div>
-          </a>
+          </Link>
           { this.userTools() }
         </header>
 
