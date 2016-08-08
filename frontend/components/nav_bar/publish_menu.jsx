@@ -1,8 +1,6 @@
 const React = require('react');
 
 const PublishMenu = React.createClass({
-  publishStory(){},
-
   menuState(){
     if(this.props.menuVisible){
       return(
@@ -19,7 +17,7 @@ const PublishMenu = React.createClass({
               <li className="publish-button-container">
                 <button
                   className="publish-button"
-                  onClick={ this.publishStory }>
+                  onClick={ this.props.submitForm }>
                   Publish
                 </button>
               </li>

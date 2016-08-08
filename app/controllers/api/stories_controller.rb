@@ -1,9 +1,9 @@
 class Api::StoriesController < ApplicationController
   def create
-    @story = User.new(story_params)
+    @story = Story.new(story_params)
     @story.author_id = @current_user.id
     if @story.save
-      render 'api/stories/show'
+      render 'api/stories/new'
     else
       render json: @story.errors.full_messages, status: 422
     end
