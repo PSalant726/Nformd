@@ -21,12 +21,16 @@ class Story < ActiveRecord::Base
   )
 
   def read_time
-    (self.body.length / 275).to_s + " min read"
+    if (self.body.length / 275.0) < 1.0
+      "< 1 min read"
+    else
+      (self.body.length / 275).to_s + " min read"
+    end
   end
 
   def preview
     prev = self.body.split(" ").first(25)
-    prev.pop
+    prev.pop if prev.length > 1
     if self.body.split(" ").length <= 25
       return prev.join(" ")
     else
