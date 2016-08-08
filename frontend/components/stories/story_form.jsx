@@ -3,13 +3,16 @@ const UserMenu = require('../nav_bar/user_menu');
 const PublishMenu = require('../nav_bar/publish_menu');
 const Link = require('react-router').Link;
 const SessionStore = require('../../stores/session_store');
-const Quill = require('react-quill');
+const StoryEditor = require('./story_editor');
+const StoryActions = require('../../actions/story_actions');
+import { Editor, EditorState } from 'draft-js';
 
 const StoryForm = React.createClass({
   getInitialState(){
     return({
       userMenuVisible: false,
       publishMenuVisible: false,
+      editorState: EditorState.createEmpty(),
       author: SessionStore.currentUser(),
       story: {
         title: "",
@@ -43,19 +46,29 @@ const StoryForm = React.createClass({
   },
 
   titleChange(event){
-    this.setState({ story: { title: event.target.value } });
+    // debugger
+    this.setState({ story: { title: event.target.value,
+      body: this.state.story.body } });
   },
 
-  bodyChange(event){
-    this.setState({ story: { body: event.target.value } });
+  editorChange(_editorState){
+    // debugger
+    this.setState({
+      editorState: _editorState,
+      story: {
+        title: this.state.story.title,
+        body: _editorState.getCurrentContent().getPlainText()
+      }
+    });
   },
 
-  handleSubmit(){
-    // NB: This is what happens when the form is submitted
-  },
-
-  submitForm(){
-    // TODO: Find a way to submit the form using this function
+  handleSubmit(event){
+    event.preventDefault();
+    StoryActions.createStory({
+      title: this.state.story.title,
+      body: this.state.story.body
+    });
+    this.setState({ story: { title: "", body: "" } });
   },
 
   userTools(){
@@ -67,7 +80,7 @@ const StoryForm = React.createClass({
           Publish
           <PublishMenu
             menuVisible={ this.state.publishMenuVisible }
-            submitform={ this.submitForm } />
+            handleSubmit={ this.handleSubmit } />
         </hgroup>
         <div className="notfications-button"></div>
         <hgroup
@@ -112,34 +125,20 @@ const StoryForm = React.createClass({
             <p className="draft">Draft</p>
           </div>
         </div>
-        <form
-          className="form"
-          onSubmit={ this.handleSubmit }>
+        <form className="form">
           <input
             className="form-title"
             type="text"
             value={ this.state.story.title }
             onChange={ this.titleChange }
             placeholder="Title" />
-          <textarea
-            className="form-body"
-            value={ this.state.story.body }
-            onChange={ this.bodyChange }
-            placeholder="Tell your story..." />
+          <StoryEditor
+            editorChange={ this.editorChange }
+            editorState={ this.state.editorState } />
         </form>
       </div>
     );
   }
 });
-
-
-
-
-// <Quill
-//   className="form-body"
-//   value={ this.state.story.body }
-// onChange={ this.bodyChange } />
-
-
 
 module.exports = StoryForm;

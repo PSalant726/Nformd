@@ -24,7 +24,11 @@ const StoriesIndex = React.createClass({
   },
 
   render(){
-    let storyIndexItems = this.state.stories.map((story, i) => {
+    let _stories = this.state.stories.sort(function(a,b){
+      return new Date(b.created_at) - new Date(a.created_at);
+    });
+
+    let storyIndexItems = _stories.map((story, i) => {
       return(
         <StoryIndexItem key={ i } story={ story } />
       );
