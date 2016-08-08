@@ -121,15 +121,25 @@ const StoryForm = React.createClass({
             value={ this.state.story.title }
             onChange={ this.titleChange }
             placeholder="Title" />
-          <Quill
+          <textarea
             className="form-body"
             value={ this.state.story.body }
             onChange={ this.bodyChange }
-            defaultValue="Tell your story..." />
+            placeholder="Tell your story..." />
         </form>
       </div>
     );
   }
 });
+
+
+
+
+// <Quill
+//   className="form-body"
+//   value={ this.state.story.body }
+// onChange={ this.bodyChange } />
+
+
 
 module.exports = StoryForm;
