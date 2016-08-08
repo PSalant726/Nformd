@@ -17,7 +17,7 @@ const PublishMenu = React.createClass({
               <li className="publish-button-container">
                 <button
                   className="publish-button"
-                  onClick={ this.props.submitForm }>
+                  onClick={ this.props.handleSubmit }>
                   Publish
                 </button>
               </li>
