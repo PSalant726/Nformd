@@ -364,6 +364,8 @@ input[type="submit"] {
   padding: 20px;
   box-shadow: 0 1px 2px rgba(0,0,0,.25),0 0 1px rgba(0,0,0,.35);
   max-width: 280px;
+  z-index: 100;
+  cursor: default;
 }
 
 .publish-menu-arrow {
@@ -372,7 +374,7 @@ input[type="submit"] {
   right: 188px;
   height: 20px;
   width: 20px;
-  z-index: 1;
+  z-index: 101;
 }
 
 .publish-menu-arrow:after{
