@@ -1,6 +1,7 @@
 const React = require('react');
 const SessionStore = require('../../stores/session_store');
 const SessionActions = require('../../actions/session_actions');
+const Link = require('react-router').Link;
 
 const UserMenu = React.createClass({
   handleLogout(){
@@ -15,9 +16,9 @@ const UserMenu = React.createClass({
           <div className="menu-arrow" />
           <div className="user-menu-inner">
             <ul className="user-menu-content">
-              <a>
-                <li className="user-menu-link">New story</li>
-              </a>
+              <Link to={ "stories/new" }>
+                <li className="user-menu-link">New Story</li>
+              </Link>
               <a>
                 <li className="user-menu-link">Drafts</li>
               </a>
