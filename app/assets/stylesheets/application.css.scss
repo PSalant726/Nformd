@@ -298,6 +298,7 @@ input[type="submit"] {
   top: 66px;
   padding: 8px 0;
   box-shadow: 0 1px 2px rgba(0,0,0,.25),0 0 1px rgba(0,0,0,.35);
+  z-index: 1;
 }
 
 .menu-arrow {
@@ -306,7 +307,7 @@ input[type="submit"] {
   right: 20px;
   height: 20px;
   width: 20px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .menu-arrow:after{

@@ -5,6 +5,7 @@ const Link = require('react-router').Link;
 const SessionStore = require('../../stores/session_store');
 const StoryEditor = require('./story_editor');
 const StoryActions = require('../../actions/story_actions');
+const hashHistory = require('react-router').hashHistory;
 import { Editor, EditorState } from 'draft-js';
 
 const StoryForm = React.createClass({
@@ -69,6 +70,7 @@ const StoryForm = React.createClass({
       body: this.state.story.body
     });
     this.setState({ story: { title: "", body: "" } });
+    hashHistory.push("stories/");
   },
 
   userTools(){
