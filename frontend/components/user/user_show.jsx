@@ -23,26 +23,52 @@ const UserShow = React.createClass({
 
   followToggle(){
     // TODO: Render and return Follow/Following button
+    return(
+      <button className="user-followtoggle">Follow</button>
+    );
+  },
+
+  author(username, fname, lname){
+    if (fname && lname){
+      return fname + " " + lname;
+    } else {
+      return username;
+    }
   },
 
   render(){
     return(
-      <div className="user-details">
-        <h1 className="user-username">{ this.state.user.username }</h1>
-        <p className="user-bio">{ this.state.user.bio }</p>
-        <div className="user-show-avatar-placeholder">
-          User Profile Image
+      <div className="user-show">
+        <div className="user-details">
+          <div className="user-header group">
+            <div className="user-show-avatar-placeholder" />
+            <h1 className="user-username">
+              {
+                this.author(
+                  this.state.user.username,
+                  this.state.user.fname,
+                  this.state.user.lname
+                )
+              }
+            </h1>
+            <p className="user-bio">{ this.state.user.bio }</p>
+          </div>
+          <div className="user-follow-info group">
+            <div className="user-num-following">
+              <span className="bold">200</span> Following
+            </div>
+            <div className="user-num-followers">
+              <span className="bold">50</span> Followers
+            </div>
+          </div>
+          { this.followToggle() }
         </div>
-        <p className="user-num-following">100 Following</p>
-        <p className="user-num-followers">50 Followers</p>
-        { this.followToggle() }
-        <ul className="user-feed-tabs">
-          <li>Profile</li>
-          <li>Latest</li>
-          <li>Recommends</li>
-          <li>Responses</li>
-        </ul>
-        <div className="user-feed-goes-here">User Feed!</div>
+        <div className="user-feed-tabs group">
+          <button>Profile</button>
+          <button>Latest</button>
+          <button>Recommends</button>
+          <button>Responses</button>
+        </div>
       </div>
     );
   }
