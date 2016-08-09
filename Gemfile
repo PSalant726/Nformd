@@ -33,6 +33,15 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Faker to seed the database
 gem 'faker', '~> 1.6.6'
 
+# Use paperclip for attaching images to rails models
+gem 'paperclip', '~> 5.0.0.beta1'
+
+# Use figaro to protect sensitive data
+gem 'figaro'
+
+# Use Amazon Web Services for image storage
+gem 'aws-sdk', '>= 2.0'
+
 group :production do
   gem 'rails_12factor'
 end

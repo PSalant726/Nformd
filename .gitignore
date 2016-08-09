@@ -18,3 +18,9 @@ bundle.js.map
 .DS_Store
 npm-debug.log
 .byebug_history
+
+# Ignore application configuration
+/config/application.yml
+
+# Ignore aws-credentials
+aws_credentials.csv
