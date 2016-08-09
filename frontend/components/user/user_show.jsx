@@ -1,6 +1,7 @@
 const React = require('react');
 const UserStore = require('../../stores/user_store');
 const UserActions = require('../../actions/user_actions');
+const SessionStore = require('../../stores/session_store');
 const Link = require('react-router').Link;
 
 const UserShow = React.createClass({
@@ -36,12 +37,28 @@ const UserShow = React.createClass({
     }
   },
 
+  avatar(){
+    if(this.state.user.id === SessionStore.currentUser().id){
+      return(
+        <div className="user-show-avatar-placeholder">
+          Upload Placeholder!
+        </div>
+      );
+    } else {
+      return(
+        <div className="user-show-avatar">
+          <img src={ this.state.user.avatar_url } />
+        </div>
+      );
+    }
+  },
+
   render(){
     return(
       <div className="user-show">
         <div className="user-details">
           <div className="user-header group">
-            <div className="user-show-avatar-placeholder" />
+            { this.avatar() }
             <h1 className="user-username">
               {
                 this.author(

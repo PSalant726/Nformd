@@ -17,7 +17,7 @@ User.create(username: "Guest", password: "password", email: "Guest@noemail.com")
     # Randomize user passwords
     # password: Faker::Internet.password(10),
     email: email,
-    # avatar: Faker::Avatar.image(username)
+    avatar: File.open('app/assets/images/test_avatar.png')
   )
 end
 

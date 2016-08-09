@@ -47,13 +47,11 @@ const StoryForm = React.createClass({
   },
 
   titleChange(event){
-    // debugger
     this.setState({ story: { title: event.target.value,
       body: this.state.story.body } });
   },
 
   editorChange(_editorState){
-    // debugger
     this.setState({
       editorState: _editorState,
       story: {
@@ -86,8 +84,9 @@ const StoryForm = React.createClass({
         </hgroup>
         <div className="notfications-button"></div>
         <hgroup
-          className="nav-avatar-image-placeholder"
+          className="nav-avatar"
           onClick={ this.userMenuToggle }>
+          <img src={ this.state.author.avatar_url } />
           <UserMenu menuVisible={ this.state.userMenuVisible } />
         </hgroup>
       </div>
@@ -116,11 +115,15 @@ const StoryForm = React.createClass({
           { this.userTools() }
         </header>
         <div className="show-details-image">
-          <div className="image-container">
-            <a className="show-avatar-image-placeholder" />
+          <div className="show-avatar">
+            <img src={ this.state.author.avatar_url } />
           </div>
           <div className="show-details">
-            <a className="show-author">{ author }</a>
+            <Link
+              to={ `users/${this.state.author.id}` }
+              className="show-author">
+              { author }
+            </Link>
             <p className="show-author-bio">
               { this.state.author.bio_preview }
             </p>

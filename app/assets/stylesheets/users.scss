@@ -15,12 +15,27 @@
   text-align: left;
 }
 
+// TODO: Remove this class
 .user-show-avatar-placeholder {
   float: right;
   height: 100px;
   width: 100px;
   background-color: red;
   border-radius: 50%;
+}
+
+.user-show-avatar {
+  float: right;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user-show-avatar > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .user-username{

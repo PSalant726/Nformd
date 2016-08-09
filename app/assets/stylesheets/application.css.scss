@@ -277,14 +277,20 @@ input[type="submit"] {
   float: left;
 }
 
-.nav-avatar-image-placeholder {
-  height: 30px;
-  width: 30px;
-  background-color: red;
+.nav-avatar {
+  height: 32px;
+  width: 32px;
   border-radius: 50%;
   float: right;
-  margin-bottom: -1px;
+  margin-bottom: -3px;
   cursor: pointer;
+  overflow: hidden;
+}
+
+.nav-avatar > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .user-menu-outer {
