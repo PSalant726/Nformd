@@ -1,0 +1,115 @@
+.user-show {
+  box-shadow: 0 4px 2px -2px rgba(0,0,0,.05);
+}
+
+.user-details {
+  background: #fff;
+  box-shadow: 0 4px 2px -2px rgba(0,0,0,.05);
+  padding: 20px 20px 40px;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.user-header{
+  height: auto;
+  text-align: left;
+}
+
+.user-show-avatar-placeholder {
+  float: right;
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.user-username{
+  font-size: 32px;
+  margin-left: -2px;
+  margin-bottom: 0px;
+  width: 75%;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+  font-weight: 700;
+  color: rgba(0,0,0,.8);
+  height: auto;
+}
+
+.user-bio{
+  font-size: 16px;
+  margin-top: 4px;
+  width: 75%;
+  color: rgba(0,0,0,.6);
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+  font-weight: 400;
+  padding-bottom: 20px;
+}
+
+.user-follow-info {
+  padding: 8px 0;
+  display: block;
+}
+
+.user-num-following, .user-num-followers {
+  margin-right: 0;
+  padding-right: 16px;
+  color: rgba(0,0,0,.44);
+  height: 37px;
+  line-height: 35px;
+  transition: .1s background-color,.1s border-color,.1s color,.1s fill;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+  font-weight: 400;
+  float: left;
+}
+
+.user-num-following:hover, .user-num-followers:hover {
+  color: rgba(0,0,0,.6);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.user-followtoggle {
+  padding: 0 16px;
+  transition: .1s background-color,.1s border-color,.1s color,.1s fill;
+  color: #00ab6b;
+  line-height: 35px;
+  height: 37px;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,.15);
+  border-color: #02b875;
+  border-radius: 999em;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+  font-weight: 400;
+}
+
+.user-followtoggle:hover {
+  border-color: #00ab6b;
+  color: #1c9963;
+}
+
+.user-feed-tabs {
+  padding: 0 20px;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.user-feed-tabs > button {
+  float: left;
+  padding: 0 20px 15px 0;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+  color: rgba(0,0,0,.44);
+}
+
+.user-feed-tabs > button:hover {
+  color: rgba(0,0,0,.6);
+}
+
+.user-feed-goes-here {
+  background: #FAFAFA;
+}
