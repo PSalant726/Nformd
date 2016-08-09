@@ -55,6 +55,7 @@ const UserShow = React.createClass({
     let formData = new FormData();
     formData.append("user[avatar]", this.state.imageFile);
     UserActions.updateUserPic(this.state.user, formData);
+    this.setState({ imageFile: null, imageUrl: null });
   },
 
   avatarControls(){
