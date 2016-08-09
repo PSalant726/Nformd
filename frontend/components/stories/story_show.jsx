@@ -4,9 +4,6 @@ const StoryActions = require('../../actions/story_actions');
 const TimeAgo = require('react-timeago').default;
 
 const StoryShow = React.createClass({
-  // TODO: How do I update the Store before the component's initial render?
-  //  Going from the StoriesIndex to the StoryShow page is fine, but you cannot
-  //  go directly to the StoryShow page without encountering an error.
   getInitialState(){
     return ({
       story: {
