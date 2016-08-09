@@ -33,10 +33,6 @@ SessionStore.__onDispatch = function(payload){
       _logout();
       SessionStore.__emitChange();
       break;
-    case UserConstants.USER_RECEIVED:
-      _login(payload.user);
-      SessionStore.__emitChange();
-      break;
   }
 };
 
