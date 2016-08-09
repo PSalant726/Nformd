@@ -16,8 +16,8 @@ const StoryIndexItem = React.createClass({
       <li className="listed-story">
         <div className="group story-details-container">
           <div className="story-details-image">
-            <div className="image-container">
-              <a className="story-avatar-image-placeholder" />
+            <div className="story-avatar">
+              <img src={ this.props.story.author.avatar_url } />
             </div>
             <div className="story-details">
               <Link

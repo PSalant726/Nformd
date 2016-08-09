@@ -61,8 +61,8 @@ const StoryShow = React.createClass({
     return(
       <div className="full-story">
         <div className="show-details-image">
-          <div className="image-container">
-            <a className="show-avatar-image-placeholder" />
+          <div className="show-avatar">
+            <img src={ this.state.story.author.avatar_url } />
           </div>
           <div className="show-details">
             <a className="show-author">{ author }</a>
