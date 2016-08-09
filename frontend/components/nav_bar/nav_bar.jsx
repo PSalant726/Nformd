@@ -4,6 +4,7 @@ const SessionActions = require('../../actions/session_actions');
 const Modal = require('react-modal');
 const FormModal = require('../form_modal');
 const UserMenu = require('./user_menu');
+const UserStore = require('../../stores/user_store');
 const Link = require('react-router').Link;
 const hashHistory = require('react-router').hashHistory;
 
