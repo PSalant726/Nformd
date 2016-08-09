@@ -4,6 +4,7 @@ const SessionConstants = require('../constants/session_constants');
 const UserConstants = require('../constants/user_constants');
 
 let _currentUser = {};
+let _thisUser = {};
 
 const SessionStore = new Store(AppDispatcher);
 
@@ -15,8 +16,16 @@ const _logout = function(){
   _currentUser = {};
 };
 
+const setThisUser = function(user){
+  _thisUser = user;
+};
+
 SessionStore.currentUser = function(){
   return Object.assign({}, _currentUser);
+};
+
+SessionStore.thisUser = function(){
+  return Object.assign({}, _thisUser);
 };
 
 SessionStore.isUserLoggedIn = function() {
@@ -31,6 +40,10 @@ SessionStore.__onDispatch = function(payload){
       break;
     case SessionConstants.LOGOUT:
       _logout();
+      SessionStore.__emitChange();
+      break;
+    case UserConstants.USER_RECEIVED:
+      setThisUser(payload.user);
       SessionStore.__emitChange();
       break;
   }
