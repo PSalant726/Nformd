@@ -9,6 +9,7 @@ const UserMenu = React.createClass({
   },
 
   render(){
+    let currentUser = SessionStore.currentUser();
     let menuState;
     if(this.props.menuVisible){
       menuState = (
@@ -39,9 +40,9 @@ const UserMenu = React.createClass({
                 <li className="user-menu-link">Follow your interests</li>
               </a>
               <li className="user-menu-list-separator" />
-              <a className="rem-pad">
+              <Link to={ `users/${ currentUser.id }`} className="rem-pad">
                 <li className="user-menu-link personal-link">Profile</li>
-              </a>
+              </Link>
               <a className="rem-pad">
                 <li className="user-menu-link personal-link">Settings</li>
               </a>

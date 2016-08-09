@@ -20,7 +20,9 @@ const StoryIndexItem = React.createClass({
               <a className="story-avatar-image-placeholder" />
             </div>
             <div className="story-details">
-              <a className="story-author">
+              <Link
+                to={ `users/${ this.props.story.author.id }` }
+                className="story-author">
                 {
                   this.author(
                     this.props.story.author.username,
@@ -28,7 +30,7 @@ const StoryIndexItem = React.createClass({
                     this.props.story.author.lname
                   )
                 }
-              </a>
+              </Link>
               <TimeAgo
                 date={ this.props.story.created_at }
                 className="story-timeago" />
