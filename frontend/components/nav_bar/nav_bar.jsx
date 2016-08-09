@@ -47,8 +47,9 @@ const NavBar = React.createClass({
           <div className="logged-in-nav-search"></div>
           <div className="notfications-button"></div>
           <hgroup
-            className="nav-avatar-image-placeholder"
+            className="nav-avatar"
             onClick={ this.menuToggle }>
+            <img src={ SessionStore.currentUser().avatar_url } />
             <UserMenu menuVisible={ this.state.menuVisible } />
           </hgroup>
         </div>
