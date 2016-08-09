@@ -51,7 +51,7 @@ const NavBar = React.createClass({
           <hgroup
             className="nav-avatar"
             onClick={ this.menuToggle }>
-            <img src={ UserStore.user().avatar_url } />
+            <img src={ SessionStore.currentUser().avatar_url } />
             <UserMenu menuVisible={ this.state.menuVisible } />
           </hgroup>
         </div>
