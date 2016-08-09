@@ -11,6 +11,10 @@ const UserActions = {
     UserApiUtil.updateUser(user, this.receiveUser);
   },
 
+  updateUserPic(user, formData){
+    UserApiUtil.updateUserPic(user, formData, this.receiveUser);
+  },
+
   deleteUser(id){
     UserApiUtil.deleteUser(id, this.removeUser);
   },
