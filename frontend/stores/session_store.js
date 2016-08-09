@@ -1,6 +1,7 @@
 const Store = require("flux/utils").Store;
 const AppDispatcher = require('../dispatcher/dispatcher');
 const SessionConstants = require('../constants/session_constants');
+const UserConstants = require('../constants/user_constants');
 
 let _currentUser = {};
 
@@ -30,6 +31,10 @@ SessionStore.__onDispatch = function(payload){
       break;
     case SessionConstants.LOGOUT:
       _logout();
+      SessionStore.__emitChange();
+      break;
+    case UserConstants.USER_RECEIVED:
+      _login(payload.user);
       SessionStore.__emitChange();
       break;
   }

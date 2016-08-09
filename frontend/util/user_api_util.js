@@ -16,6 +16,18 @@ const UserApiUtil = {
     });
   },
 
+  updateUserPic(user, formData, success){
+    $.ajax({
+      url: `api/users/${user.id}`,
+      method: 'PATCH',
+      dataType: 'json',
+      contentType: false,
+      processData: false,
+      data: formData,
+      success
+    });
+  },
+
   deleteUser(id, success){
     $.ajax({
       url: `api/users/${id}`,
