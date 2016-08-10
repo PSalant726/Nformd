@@ -25,7 +25,7 @@ const StoryActions = {
 
   receiveAllStories(stories){
     AppDispatcher.dispatch({
-      actionType: StoryConstants.STORIES_RECIEVED,
+      actionType: StoryConstants.STORIES_RECEIVED,
       stories: stories
     });
   },
