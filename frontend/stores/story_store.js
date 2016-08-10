@@ -18,7 +18,7 @@ const setStory = function (story) {
 };
 
 const removeStory = function (story) {
-  delete _story[story.id];
+  delete _stories[story.id];
 };
 
 StoryStore.all = function(){
