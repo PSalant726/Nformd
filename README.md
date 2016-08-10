@@ -11,10 +11,10 @@ Nformd is a web application inspired by Medium that will be built using Ruby on 
 - [x] Hosting on Heroku
 - [x] New account creation, login, and guest/demo login
 - [ ] A production README, replacing this README
-- [ ] Stories
-  - [ ] Smooth, bug-free navigation
+- [x] Stories
+  - [x] Smooth, bug-free navigation
   - [x] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
+  - [x] Adequate CSS styling
 - [ ] Commenting on Stories
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features

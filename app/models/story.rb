@@ -22,7 +22,7 @@ class Story < ActiveRecord::Base
 
   def read_time
     if (self.body.length / 275.0) < 1.0
-      "< 1 min read"
+      "1 min read"
     else
       (self.body.length / 275).to_s + " min read"
     end
