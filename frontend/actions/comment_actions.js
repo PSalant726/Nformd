@@ -7,6 +7,10 @@ const CommentActions = {
     CommentApiUtil.fetchComments(this.receiveAllComments);
   },
 
+  fetchCommentsByStory(storyId){
+    CommentApiUtil.fetchCommentsByStory(storyId, this.receiveAllComments);
+  },
+
   createComment(comment){
     CommentApiUtil.createComment(comment, this.receiveComment);
   },
