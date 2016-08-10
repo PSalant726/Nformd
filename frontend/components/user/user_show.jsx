@@ -62,18 +62,36 @@ const UserShow = React.createClass({
     if(this.state.user.id === SessionStore.currentUser().id){
       let fileSelected;
       if (this.state.imageFile){
-        fileSelected = <button
-          className="upload-button"
-          onClick={ this.handleSubmit }>
-          Upload
-        </button>;
+        return(
+          <button
+            className="upload-button"
+            onClick={ this.handleSubmit }>
+            Upload
+          </button>
+        );
       } else {
-        fileSelected = <div />;
+        return(
+          <div className="user-photo-upload group">
+            <input
+              type="file"
+              name="file"
+              id="file"
+              onChange={ this.updateFile }
+              className="choose-file-button" />
+            <label htmlFor="file">Choose a Profile Photo</label>
+          </div>
+        );
       }
 
       return(
         <div className="user-photo-upload group">
-          <input type="file" onChange={ this.updateFile } />
+          <input
+            type="file"
+            name="file"
+            id="file"
+            onChange={ this.updateFile }
+            className="choose-file-button" />
+          <label htmlFor="file">Choose a Profile Photo</label>
           { fileSelected }
         </div>
       );
@@ -111,7 +129,6 @@ const UserShow = React.createClass({
             </h1>
             <p className="user-bio">{ this.state.user.bio }</p>
           </div>
-          { this.avatarControls() }
           <div className="user-follow-info group">
             <div className="user-num-following">
               <span className="bold">200</span> Following
@@ -121,6 +138,7 @@ const UserShow = React.createClass({
             </div>
           </div>
           { this.followToggle() }
+          { this.avatarControls() }
         </div>
         <div className="user-feed-tabs group">
           <button>Profile</button>
