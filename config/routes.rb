@@ -5,6 +5,6 @@ Rails.application.routes.draw do
     resource :session, only: [:new, :create, :destroy]
     resources :users, except: [:index]
     resources :stories
-    resources :comments
+    resources :comments, except: [:show]
   end
 end
