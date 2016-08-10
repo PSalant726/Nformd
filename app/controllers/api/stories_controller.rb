@@ -11,7 +11,7 @@ class Api::StoriesController < ApplicationController
   def destroy
     @story = Story.find(params[:id])
     @story.destroy
-    # TODO: Render something
+    render 'api/stories/index'
   end
 
   def edit

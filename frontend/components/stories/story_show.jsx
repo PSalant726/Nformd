@@ -3,7 +3,9 @@ const StoryStore = require('../../stores/story_store');
 const StoryActions = require('../../actions/story_actions');
 const CommentsIndex = require('../comments/comments_index.jsx');
 const CommentStore = require('../../stores/comment_store');
+const SessionStore = require('../../stores/session_store');
 const TimeAgo = require('react-timeago').default;
+const hashHistory = require('react-router').hashHistory;
 
 let _story = {
   created_at: "",
@@ -28,6 +30,7 @@ const StoryShow = React.createClass({
 
   componentWillUnmount(){
     this.storyListener.remove();
+    this.commentListener.remove();
   },
 
   handleChange(){
@@ -41,6 +44,25 @@ const StoryShow = React.createClass({
     } else {
       return username;
     }
+  },
+
+  deleteButton(){
+    if(SessionStore.currentUser().username === this.state.story.author.username){
+      return(
+        <button
+          className="show-delete-story"
+          onClick={ this.handleDeleteStory }>
+          Delete this Story
+        </button>
+      );
+    } else {
+      return(<div />);
+    }
+  },
+
+  handleDeleteStory(){
+    StoryActions.deleteStory(this.state.story.id);
+    hashHistory.push('/');
   },
 
   render(){
@@ -70,6 +92,7 @@ const StoryShow = React.createClass({
           </div>
           <div className="show-details">
             <a className="show-author">{ author }</a>
+            { this.deleteButton() }
             <p className="show-author-bio">
               { this.state.story.author.bio_preview }
             </p>

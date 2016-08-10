@@ -17,8 +17,13 @@ const NavBar = React.createClass({
   },
 
   componentDidMount(){
-    SessionStore.addListener(this.forceUpdate.bind(this));
-    UserStore.addListener(this.forceUpdate.bind(this));
+    this.sessionListener = SessionStore.addListener(this.forceUpdate.bind(this));
+    this.userListener = UserStore.addListener(this.forceUpdate.bind(this));
+  },
+
+  componentWillUnmount(){
+    this.sessionListener.remove();
+    this.userListener.remove();
   },
 
   handleClick(){
