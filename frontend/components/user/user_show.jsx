@@ -16,11 +16,15 @@ const UserShow = React.createClass({
 
   componentDidMount(){
     this.userListener = UserStore.addListener(this.handleChange);
-    UserActions.getUser(parseInt(this.props.params.id));
+    UserActions.getUser(this.props.params.id);
   },
 
   componentWillUnmount(){
     this.userListener.remove();
+  },
+
+  componentWillReceiveProps(newProps){
+    UserActions.getUser(newProps.params.id);
   },
 
   handleChange(){
