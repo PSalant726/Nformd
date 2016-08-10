@@ -28,6 +28,10 @@ UserStore.__onDispatch = function(payload){
       removeUser();
       UserStore.__emitChange();
       break;
+    case UserConstants.NEW_USER_PIC_RECEIVED:
+      setUser(payload.user);
+      UserStore.__emitChange();
+      break;
   }
 };
 
