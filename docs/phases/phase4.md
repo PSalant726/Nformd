@@ -3,7 +3,7 @@
 ## Rails
 
 ### Models
-* Follows
+* Followings
 
 ### Controllers
 
