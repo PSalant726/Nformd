@@ -10,7 +10,7 @@ const CommentsIndex = React.createClass({
 
   componentDidMount(){
     this.commentListener = CommentStore.addListener(this.getComments);
-    CommentActions.fetchComments();
+    CommentActions.fetchCommentsByStory(this.props.storyId);
   },
 
   componentWillUnmount(){
@@ -36,7 +36,8 @@ const CommentsIndex = React.createClass({
       <div className="background">
         <div className="comment-index">
           <ul className="comment-list">
-            <li>Comment Form goes here!</li>
+            <li className="comment-list-title">Responses</li>
+            <li className="listed-comment">Comment Form goes here!</li>
             { commentIndexItems }
           </ul>
         </div>

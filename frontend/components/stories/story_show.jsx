@@ -84,7 +84,7 @@ const StoryShow = React.createClass({
           <p className="show-body">{ this.state.story.body }</p>
         </div>
         <div className="show-comments-section">
-          <CommentsIndex />
+          <CommentsIndex storyId={ this.props.params.id } />
         </div>
       </div>
     );

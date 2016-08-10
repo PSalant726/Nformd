@@ -21,6 +21,11 @@ class Api::CommentsController < ApplicationController
     @comments = Comment.all.includes(:author)
   end
 
+  def index_by_story
+    @comments = Comment.where(story_id: params[:story_id])
+    render 'api/comments/index'
+  end
+
   def new
     @comment = Comment.new
   end

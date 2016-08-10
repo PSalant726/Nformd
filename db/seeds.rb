@@ -31,3 +31,14 @@ Story.delete_all
     author_id: User.where.not(username: "Guest").sample.id
   )
 end
+
+# Seed comments
+Comment.delete_all
+
+50.times do
+  Comment.create(
+    story_id: Story.all.sample.id,
+    author_id: User.where.not(username: "Guest").sample.id,
+    body: Faker::Hipster.paragraphs(1)[0]
+  )
+end
