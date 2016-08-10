@@ -38,6 +38,13 @@ body        | text      | not null
 created_at  | datetime  | not null
 updated_at  | datetime  | not null
 
+## followings (join table)
+column name       | data type | details
+------------------|-----------|-----------------------
+id                | integer   | not null, primary key
+follower_id       | integer   | not null, foreign key (references users), indexed
+user_followed_id  | integer   | not null, foreign key (references users), indexed
+
 ## likes
 column name | data type | details
 ------------|-----------|-----------------------
@@ -45,10 +52,3 @@ id          | integer   | not null, primary key
 name        | string    | not null
 story_id    | integer   | not null, foreign key (references stories), indexed
 author_id   | integer   | not null, foreign key (references users), indexed
-
-## follows (join table)
-column name       | data type | details
-------------------|-----------|-----------------------
-id                | integer   | not null, primary key
-follower_id       | integer   | not null, foreign key (references users), indexed
-user_followed_id  | integer   | not null, foreign key (references users), indexed
