@@ -43,4 +43,13 @@ class Story < ActiveRecord::Base
       return prev.join(" ") + "..."
     end
   end
+
+  def num_comments
+    num_coms = self.comments.length
+    if num_coms != 1
+      num_coms.to_s + " responses"
+    else
+      num_coms.to_s + " response"
+    end
+  end
 end

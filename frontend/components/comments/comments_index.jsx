@@ -2,14 +2,20 @@ const React = require('react');
 const CommentStore = require('../../stores/comment_store');
 const CommentActions = require('../../actions/comment_actions');
 const CommentIndexItem = require('./comment_index_item');
+const CommentForm = require('./comment_form');
+const SessionStore = require('../../stores/session_store');
 
 const CommentsIndex = React.createClass({
   getInitialState(){
-    return({ comments: [] });
+    return({
+      comments: [],
+      currentUser: SessionStore.currentUser()
+    });
   },
 
   componentDidMount(){
     this.commentListener = CommentStore.addListener(this.getComments);
+    this.userListener = SessionStore.addListener(this.getCurrentUser);
     CommentActions.fetchCommentsByStory(this.props.storyId);
   },
 
@@ -19,6 +25,10 @@ const CommentsIndex = React.createClass({
 
   getComments(){
     this.setState({ comments: CommentStore.all() });
+  },
+
+  getCurrentUser(){
+    this.setState({ currentUser: SessionStore.currentUser() });
   },
 
   render(){
@@ -37,7 +47,9 @@ const CommentsIndex = React.createClass({
         <div className="comment-index">
           <ul className="comment-list">
             <li className="comment-list-title">Responses</li>
-            <li className="listed-comment">Comment Form goes here!</li>
+            <CommentForm
+              currentUser={ this.state.currentUser }
+              storyId={ this.props.storyId } />
             { commentIndexItems }
           </ul>
         </div>
