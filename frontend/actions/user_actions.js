@@ -12,7 +12,7 @@ const UserActions = {
   },
 
   updateUserPic(user, formData){
-    UserApiUtil.updateUserPic(user, formData, this.receiveUser);
+    UserApiUtil.updateUserPic(user, formData, this.receiveUserPic);
   },
 
   deleteUser(id){
@@ -29,6 +29,13 @@ const UserActions = {
   removeUser(){
     AppDispatcher.dispatch({
       actionType: UserConstants.USER_REMOVED
+    });
+  },
+
+  receiveUserPic(user){
+    AppDispatcher.dispatch({
+      actionType: UserConstants.NEW_USER_PIC_RECEIVED,
+      user: user
     });
   }
 };
