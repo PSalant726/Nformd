@@ -56,6 +56,13 @@ const StoryIndexItem = React.createClass({
           className="story-readmore">
           Read more...
         </Link>
+        <div className="story-likes-comments group">
+          <Link
+            to={ `/stories/${this.props.story.id}` }
+            className="story-comments">
+            { this.props.story.num_comments }
+          </Link>
+        </div>
       </li>
     );
   }
