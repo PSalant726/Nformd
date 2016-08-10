@@ -82,7 +82,7 @@ Nformd is a web application inspired by Medium that will be built using Ruby on 
 
 **Objective:** Comments belong to Stories, and can be viewed by Story.
 
-- [ ] create `Comments` model
+- [x] create `Comments` model
 - build out API, Flux loop, and components for:
   - [ ] Comment CRUD
   - [ ] adding Comments requires a Story
