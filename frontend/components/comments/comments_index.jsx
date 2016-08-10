@@ -31,6 +31,18 @@ const CommentsIndex = React.createClass({
     this.setState({ currentUser: SessionStore.currentUser() });
   },
 
+  commentForm(){
+    if(SessionStore.isUserLoggedIn()){
+      return(
+        <CommentForm
+          currentUser={ this.state.currentUser }
+          storyId={ this.props.storyId } />
+      );
+    } else {
+      return(<div />);
+    }
+  },
+
   render(){
     let _comments = this.state.comments.sort(function(a, b){
       return new Date(b.created_at) - new Date(a.created_at);
@@ -47,9 +59,7 @@ const CommentsIndex = React.createClass({
         <div className="comment-index">
           <ul className="comment-list">
             <li className="comment-list-title">Responses</li>
-            <CommentForm
-              currentUser={ this.state.currentUser }
-              storyId={ this.props.storyId } />
+            { this.commentForm() }
             { commentIndexItems }
           </ul>
         </div>
