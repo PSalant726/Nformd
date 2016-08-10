@@ -45,7 +45,8 @@ const CommentForm = React.createClass({
             className="comment-text-input"
             placeholder="Write a response..."
             onChange={ this.changeBody }
-            cols="50" />
+            cols="50"
+            value={ this.state.body } />
           { this.publishButton() }
         </div>
       </li>

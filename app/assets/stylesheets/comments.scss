@@ -10,6 +10,7 @@
   margin: auto;
   max-width: 1000px;
   padding: 35px 0;
+  height: 100vh;
 }
 
 .comment-list {
@@ -130,11 +131,15 @@
 .commentform-entryfield {
   float: left;
   margin-left: 15px;
-  font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif; 
+  font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
 }
 
 .commentform-publish-button {
   margin-left: 20px;
   position: absolute;
   margin-top: 9px;
+}
+
+.comment-text-input {
+  resize: none;
 }

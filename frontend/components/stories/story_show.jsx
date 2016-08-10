@@ -2,24 +2,27 @@ const React = require('react');
 const StoryStore = require('../../stores/story_store');
 const StoryActions = require('../../actions/story_actions');
 const CommentsIndex = require('../comments/comments_index.jsx');
+const CommentStore = require('../../stores/comment_store');
 const TimeAgo = require('react-timeago').default;
 
+let _story = {
+  created_at: "",
+  author: {
+    username: "",
+    bio: "",
+    bio_preview: ""
+  }
+};
+
 const StoryShow = React.createClass({
+
   getInitialState(){
-    return ({
-      story: {
-        created_at: "",
-        author: {
-          username: "",
-          bio: "",
-          bio_preview: ""
-        }
-      }
-    });
+    return ({ story: _story });
   },
 
   componentDidMount(){
     this.storyListener = StoryStore.addListener(this.handleChange);
+    this.commentListener = CommentStore.addListener(this.handleChange);
     StoryActions.getStory(parseInt(this.props.params.id));
   },
 
@@ -29,7 +32,7 @@ const StoryShow = React.createClass({
 
   handleChange(){
     const thisStory = StoryStore.find(this.props.params.id);
-    this.setState({ story: thisStory ? thisStory : {} });
+    this.setState({ story: thisStory ? thisStory : _story });
   },
 
   author(username, fname, lname){

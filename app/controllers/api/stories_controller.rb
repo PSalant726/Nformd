@@ -2,7 +2,7 @@ class Api::StoriesController < ApplicationController
   def create
     @story = current_user.stories.new(story_params)
     if @story.save
-      render 'api/stories/new'
+      render 'api/stories/show'
     else
       render json: @story.errors.full_messages, status: 422
     end
