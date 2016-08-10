@@ -7,9 +7,7 @@ const Link = require('react-router').Link;
 
 const StoriesIndex = React.createClass({
   getInitialState(){
-    return({
-      stories: []
-    });
+    return({ stories: [] });
   },
 
   componentDidMount(){
