@@ -33,7 +33,7 @@ StoryStore.find = function (id) {
 
 StoryStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
-    case StoryConstants.STORIES_RECIEVED:
+    case StoryConstants.STORIES_RECEIVED:
       resetStories(payload.stories);
       StoryStore.__emitChange();
       break;
