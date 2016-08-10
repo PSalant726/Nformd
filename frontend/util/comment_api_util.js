@@ -7,6 +7,14 @@ const CommentApiUtil = {
     });
   },
 
+  fetchCommentsByStory(storyId, success){
+    $.ajax({
+      url: `api/stories/${storyId}/comments`,
+      method: 'GET',
+      success
+    });
+  },
+
   createComment(comment, success){
     $.ajax({
       url: 'api/comments',

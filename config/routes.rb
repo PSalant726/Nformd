@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resource :session, only: [:new, :create, :destroy]
     resources :users, except: [:index]
-    resources :stories
+    resources :stories do
+        get 'comments' => 'comments#index_by_story'
+    end
     resources :comments, except: [:show]
   end
 end
