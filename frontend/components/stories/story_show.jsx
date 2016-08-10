@@ -1,6 +1,7 @@
 const React = require('react');
 const StoryStore = require('../../stores/story_store');
 const StoryActions = require('../../actions/story_actions');
+const CommentsIndex = require('../comments/comments_index.jsx');
 const TimeAgo = require('react-timeago').default;
 
 const StoryShow = React.createClass({
@@ -83,7 +84,7 @@ const StoryShow = React.createClass({
           <p className="show-body">{ this.state.story.body }</p>
         </div>
         <div className="show-comments-section">
-          Comments will go here!
+          <CommentsIndex />
         </div>
       </div>
     );
