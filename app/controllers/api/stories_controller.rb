@@ -35,7 +35,7 @@ class Api::StoriesController < ApplicationController
     if @story.update
       render 'api/stories/show'
     else
-      render json: @story.errors.fullmessages, status: 422
+      render json: @story.errors.full_messages, status: 422
     end
   end
 
