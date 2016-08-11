@@ -19,10 +19,10 @@ Nformd is a web application inspired by Medium that will be built using Ruby on 
   - [x] Smooth, bug-free navigation
   - [x] Adequate seed data to demonstrate the site's features
   - [x] Adequate CSS styling
-- [ ] Follows and Feed
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
+- [x] Follows and Feed
+  - [x] Smooth, bug-free navigation
+  - [x] Adequate seed data to demonstrate the site's features
+  - [x] Adequate CSS styling
 - [ ] Likes/Favorites
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
@@ -98,10 +98,10 @@ Phase 3 adds organization to the Comments. Comments belong to a Story, which has
 
 - [x] create `Followings` model and join table
 - build out API, Flux loop, and components for:
-  - [ ] fetching Followers for Users
-  - [ ] adding Followers to Users
-  - [ ] unfollowing Users
-- [ ] Style new elements
+  - [x] fetching Followers for Users
+  - [x] adding Followers to Users
+  - [x] unfollowing Users
+- [x] Style new elements
 - [ ] Seed additional Users and add Followers to the seeded Users
 
 ### [Phase 5][phase-five]: Allow Likes/Favorites in Stories (1 days, W2 Th 6pm)

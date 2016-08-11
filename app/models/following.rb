@@ -12,6 +12,7 @@
 class Following < ActiveRecord::Base
   validates :follower_id, :followee_id, presence: true
   validates :follower_id, uniqueness: { scope: :followee_id }
+  validates :followee_id, uniqueness: { scope: :follower_id }
 
   belongs_to(
     :follower,

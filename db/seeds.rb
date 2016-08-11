@@ -42,3 +42,14 @@ Comment.delete_all
     body: Faker::Hipster.paragraphs(1)[0]
   )
 end
+
+# Seed followings
+Following.delete_all
+
+30.times do
+  following = Following.new(
+    follower_id: User.all.sample.id,
+    followee_id: User.all.sample.id
+  )
+  redo unless following.save
+end

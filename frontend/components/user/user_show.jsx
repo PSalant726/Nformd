@@ -49,25 +49,27 @@ const UserShow = React.createClass({
   },
 
   followButton(){
-    if(this.state.user.id === SessionStore.currentUser().id){
-      return(<div />);
-    } else {
-      if (this.state.followers[SessionStore.currentUser().id]){
-        return(
-          <button
-            onClick={ this.followToggle }
-            className="user-followtoggle-following">
-            Unfollow
-          </button>
-        );
+    if(SessionStore.isUserLoggedIn()){
+      if(this.state.user.id === SessionStore.currentUser().id){
+        return(<div />);
       } else {
-        return(
-          <button
-            onClick={ this.followToggle }
-            className="user-followtoggle-follow">
-            Follow
-          </button>
-        );
+        if (this.state.followers[SessionStore.currentUser().id]){
+          return(
+            <button
+              onClick={ this.followToggle }
+              className="user-followtoggle-following">
+              Unfollow
+            </button>
+          );
+        } else {
+          return(
+            <button
+              onClick={ this.followToggle }
+              className="user-followtoggle-follow">
+              Follow
+            </button>
+          );
+        }
       }
     }
   },

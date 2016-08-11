@@ -6,8 +6,6 @@ class Api::FollowingsController < ApplicationController
       @followees = user.followees
       @followers = user.followers
       @following_id = following.id
-      # @user = following.followee
-      # render 'api/users/show'
       render :index
     else
       render json: following.errors.full_messages, status: 422
@@ -32,7 +30,11 @@ class Api::FollowingsController < ApplicationController
     user = User.find(params[:user_id])
     @followees = user.followees
     @followers = user.followers
-    following = Following.find_by(followee_id: params[:user_id], follower_id: current_user.id)
+    if current_user
+      following = Following.find_by(followee_id: params[:user_id], follower_id: current_user.id)
+    else
+      following = nil
+    end
     if following
       @following_id = following.id
     else
