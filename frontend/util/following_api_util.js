@@ -11,7 +11,6 @@ const FollowingApiUtil = {
     $.ajax({
       url: `api/users/${followeeId}/followings`,
       method: 'POST',
-      data: followeeId,
       success
     });
   },

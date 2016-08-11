@@ -8,11 +8,11 @@ const FollowingActions = {
   },
 
   addFollowee(followeeId){
-    FollowingApiUtil.addFollowee(followeeId, this.receiveNewFollowee);
+    FollowingApiUtil.addFollowee(followeeId, this.receiveFollowings);
   },
 
   deleteFollowee(followingId){
-    FollowingApiUtil.deleteFollowee(followingId, this.removeFollowee);
+    FollowingApiUtil.deleteFollowee(followingId, this.receiveFollowings);
   },
 
   receiveFollowings(followings){
@@ -20,21 +20,21 @@ const FollowingActions = {
       actionType: FollowingConstants.FOLLOWINGS_RECEIVED,
       followings: followings
     });
-  },
+  }
 
-  receiveNewFollowee(followee){
-    AppDispatcher.dispatch({
-      actionType: FollowingConstants.FOLLOWEE_RECEIVED,
-      followee: followee
-    });
-  },
-
-  removeFollowee(followee_id){
-    AppDispatcher.dispatch({
-      actionType: FollowingConstants.FOLLOWEE_REMOVED,
-      followee_id: followee_id
-    });
-  },
+  // receiveNewFollowee(followee){
+  //   AppDispatcher.dispatch({
+  //     actionType: FollowingConstants.FOLLOWEE_RECEIVED,
+  //     followee: followee
+  //   });
+  // },
+  //
+  // removeFollowee(followee_id){
+  //   AppDispatcher.dispatch({
+  //     actionType: FollowingConstants.FOLLOWEE_REMOVED,
+  //     followee_id: followee_id
+  //   });
+  // },
 };
 
 module.exports = FollowingActions;

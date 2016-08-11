@@ -21,15 +21,15 @@ const resetFollowings = function(followings){
   _following_id = followings.following_id;
 };
 
-const addFollowee = function(followee){
-  _following_id = "";
-  _followees[followee.id] = followee;
-};
-
-const removeFollowee = function(followee_id){
-  _following_id = "";
-  delete _followees[followee_id];
-};
+// const addFollowee = function(followee){
+//   _following_id = "";
+//   _followees[followee.id] = followee;
+// };
+//
+// const removeFollowee = function(followee_id){
+//   _following_id = "";
+//   delete _followees[followee_id];
+// };
 
 FollowingStore.followers = function(){
   return Object.assign({}, _followers);
@@ -49,14 +49,14 @@ FollowingStore.__onDispatch = function(payload){
       resetFollowings(payload.followings);
       FollowingStore.__emitChange();
       break;
-    case FollowingConstants.FOLLOWEE_RECEIVED:
-      addFollowee(payload.followee);
-      FollowingStore.__emitChange();
-      break;
-    case FollowingConstants.FOLLOWEE_REMOVED:
-      removeFollowee(payload.followee_id);
-      FollowingStore.__emitChange();
-      break;
+    // case FollowingConstants.FOLLOWEE_RECEIVED:
+    //   addFollowee(payload.followee);
+    //   FollowingStore.__emitChange();
+    //   break;
+    // case FollowingConstants.FOLLOWEE_REMOVED:
+    //   removeFollowee(payload.followee_id);
+    //   FollowingStore.__emitChange();
+    //   break;
   }
 };
 

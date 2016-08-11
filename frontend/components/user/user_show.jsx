@@ -41,7 +41,6 @@ const UserShow = React.createClass({
   },
 
   getFollowings(){
-    debugger
     this.setState({
       followers: FollowingStore.followers(),
       followees: FollowingStore.followees(),
@@ -58,7 +57,7 @@ const UserShow = React.createClass({
           <button
             onClick={ this.followToggle }
             className="user-followtoggle-following">
-            Following
+            Unfollow
           </button>
         );
       } else {
@@ -76,7 +75,6 @@ const UserShow = React.createClass({
   followToggle(){
     if (this.state.followers[SessionStore.currentUser().id]){
       FollowingActions.deleteFollowee(this.state.followingId);
-      debugger
     } else {
       FollowingActions.addFollowee(parseInt(this.props.params.id));
     }
@@ -158,7 +156,6 @@ const UserShow = React.createClass({
       newImage = <div />;
     }
 
-    debugger 
     return(
       <div className="user-show">
         <div className="user-details">
@@ -181,7 +178,7 @@ const UserShow = React.createClass({
           <div className="user-follow-info group">
             <div className="user-num-following">
               <span className="bold">
-                Woops
+                { Object.keys(this.state.followees).length }
               </span> Following
             </div>
             <div className="user-num-followers">
@@ -203,8 +200,5 @@ const UserShow = React.createClass({
     );
   }
 });
-
-
-// Render followees of viewed user, NOT current user
 
 module.exports = UserShow;
