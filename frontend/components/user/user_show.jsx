@@ -31,11 +31,32 @@ const UserShow = React.createClass({
     this.setState({ user: UserStore.user() });
   },
 
+  followButton(){
+    if(this.state.user.id === SessionStore.currentUser().id){
+      return(<div />);
+    } else {
+      if (true){ // If I am not currently following this user
+        return(
+          <button
+            onClick={ this.followToggle }
+            className="user-followtoggle-follow">
+            Follow
+          </button>
+        );
+      } else {
+        return(
+          <button
+            onClick={ this.followToggle }
+            className="user-followtoggle-following">
+            Following
+          </button>
+        );
+      }
+    }
+  },
+
   followToggle(){
-    // TODO: Render and return Follow/Following button
-    return(
-      <button className="user-followtoggle">Follow</button>
-    );
+
   },
 
   author(username, fname, lname){
@@ -141,8 +162,8 @@ const UserShow = React.createClass({
               <span className="bold">50</span> Followers
             </div>
           </div>
-          { this.followToggle() }
           { this.avatarControls() }
+          { this.followButton() }
         </div>
         <div className="user-feed-tabs group">
           <button>Profile</button>
