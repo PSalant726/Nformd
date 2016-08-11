@@ -6,6 +6,7 @@ const CommentStore = require('../../stores/comment_store');
 const SessionStore = require('../../stores/session_store');
 const TimeAgo = require('react-timeago').default;
 const hashHistory = require('react-router').hashHistory;
+const Link = require('react-router').Link;
 
 let _story = {
   created_at: "",
@@ -91,8 +92,12 @@ const StoryShow = React.createClass({
             <img src={ this.state.story.author.avatar_url } />
           </div>
           <div className="show-details">
-            <a className="show-author">{ author }</a>
             { this.deleteButton() }
+            <Link
+              to={ `/users/${ this.state.story.author.id }` }
+              className="show-author">
+              { author }
+            </Link>
             <p className="show-author-bio">
               { this.state.story.author.bio_preview }
             </p>
@@ -109,7 +114,7 @@ const StoryShow = React.createClass({
           <h1 className="show-title">{ this.state.story.title }</h1>
           <p className="show-body">{ this.state.story.body }</p>
         </div>
-        <div className="show-comments-section">
+        <div className="show-comments-section group">
           <CommentsIndex storyId={ this.props.params.id } />
         </div>
       </div>
