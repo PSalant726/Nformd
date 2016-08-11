@@ -1,5 +1,5 @@
 const FollowingApiUtil = {
-  getFollowings(userId, success){
+  fetchFollowings(userId, success){
     $.ajax({
       url: `api/users/${userId}/followings`,
       method: 'GET',

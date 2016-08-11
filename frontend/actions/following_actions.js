@@ -3,31 +3,38 @@ const AppDispatcher = require('../dispatcher/dispatcher');
 const FollowingConstants = require('../constants/following_constants');
 
 const FollowingActions = {
-  getFollowing(userId){
-    FollowingApiUtil.getFollowing(userId, this.receiveFollowing);
+  fetchFollowings(userId){
+    FollowingApiUtil.fetchFollowings(userId, this.receiveFollowings);
   },
 
   createFollowing(following){
-    FollowingApiUtil.createFollowing(following, this.receiveFollowing);
+    FollowingApiUtil.createFollowing(following, this.receiveNewFollowee);
   },
 
   deleteFollowing(following){
-    FollowingApiUtil.deleteFollowing(following, this.removeFollowing);
+    FollowingApiUtil.deleteFollowing(following, this.removeFollowee);
   },
 
-  receiveFollowing(following){
+  receiveFollowings(followings){
     AppDispatcher.dispatch({
-      actionType: FollowingConstants.FOLLOWING_RECEIVED,
-      following: following
+      actionType: FollowingConstants.FOLLOWINGS_RECEIVED,
+      followings: followings
     });
   },
 
-  removeFollowing(following){
+  receiveNewFollowee(followee){
     AppDispatcher.dispatch({
-      actionType: FollowingConstants.FOLLOWING_REMOVED,
-      following: following
+      actionType: FollowingConstants.FOLLOWEE_RECEIVED,
+      followee: followee
     });
-  }
+  },
+
+  removeFollowee(followee_id){
+    AppDispatcher.dispatch({
+      actionType: FollowingConstants.FOLLOWEE_REMOVED,
+      followee_id: followee_id
+    });
+  },
 };
 
 module.exports = FollowingActions;

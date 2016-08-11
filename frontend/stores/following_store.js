@@ -4,14 +4,26 @@ const FollowingConstants = require('../constants/following_constants');
 
 const FollowingStore = new Store(AppDispatcher);
 
-let _following = {};
+let _followers = {};
+let _followees = {};
 
-const setFollowing = function(following){
-  _following = following;
+const resetFollowings = function(followings){
+  _followers = {};
+  _followees = {};
+  followings.followers.forEach(follower => {
+    _followers[follower.id] = follower;
+  });
+  followings.followees.forEach(followee => {
+    _followees[followee.id] = followee;
+  });
 };
 
-const removeFollowing = function(following){
-  _following = {};
+const addFollowee = function(followee){
+  _followees[followee.id] = followee;
+};
+
+const removeFollowee = function(followee_id){
+  delete _followees[followee_id];
 };
 
 FollowingStore.following = function(){
@@ -20,12 +32,16 @@ FollowingStore.following = function(){
 
 FollowingStore.__onDispatch = function(payload){
   switch (payload.actionType) {
-    case FollowingConstants.FOLLOWING_RECEIVED:
-      setFollowing(payload.following);
+    case FollowingConstants.FOLLOWINGS_RECEIVED:
+      resetFollowings(payload.followings);
       FollowingStore.__emitChange();
       break;
-    case FollowingConstants.FOLLOWING_REMOVED:
-      removeFollowing(payload.following);
+    case FollowingConstants.FOLLOWEE_RECEIVED:
+      addFollowee(payload.followee);
+      FollowingStore.__emitChange();
+      break;
+    case FollowingConstants.FOLLOWEE_REMOVED:
+      removeFollowee(payload.followee_id);
       FollowingStore.__emitChange();
       break;
   }
