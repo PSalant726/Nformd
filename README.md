@@ -96,11 +96,10 @@ Phase 3 adds organization to the Comments. Comments belong to a Story, which has
 
 **Objective:** Users can follow many other Users, and view all of their followed Users' Stories in their Feed.
 
-- [ ] create `Followings` model and join table
+- [x] create `Followings` model and join table
 - build out API, Flux loop, and components for:
   - [ ] fetching Followers for Users
   - [ ] adding Followers to Users
-  - [ ] searching Followers by User
   - [ ] unfollowing Users
 - [ ] Style new elements
 - [ ] Seed additional Users and add Followers to the seeded Users
@@ -109,14 +108,13 @@ Phase 3 adds organization to the Comments. Comments belong to a Story, which has
 
 **objective:** Users can Like Stories, or Favorite them for later viewing.
 
-- [ ] create `Likes` and `Favorites` models and join table
+- [ ] create `Likes` model and join table
 - build out API, Flux loop, and components for:
-  - [ ] fetching Favorites for Users
+  - [ ] fetching Liked Stories for Users
   - [ ] adding Likes to Stories
-  - [ ] searching Favorites by User
-  - [ ] un-Favoriting/un-Liking Stories
+  - [ ] un-Liking Stories
 - [ ] Style new elements
-- [ ] Seed additional Stories, add Favorites for the seeded Users, add Likes for the seeded Stories
+- [ ] Seed additional Stories, add Likes for the seeded Stories
 
 ### Phase 6: - Pagination / infinite scroll for Stories Index (1 day, W2 F 6pm)
 
