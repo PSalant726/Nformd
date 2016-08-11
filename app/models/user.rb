@@ -43,17 +43,29 @@ class User < ActiveRecord::Base
   )
 
   has_many(
-    :followers,
+    :in_followings,
     class_name: "Following",
     foreign_key: :followee_id,
     primary_key: :id
   )
 
   has_many(
-    :followees,
+    :out_followings,
     class_name: "Following",
     foreign_key: :follower_id,
     primary_key: :id
+  )
+
+  has_many(
+    :followers,
+    through: :in_followings,
+    source: :follower
+  )
+
+  has_many(
+    :followees,
+    through: :out_followings,
+    source: :followee
   )
 
   attr_reader :password
