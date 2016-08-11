@@ -46,10 +46,12 @@ class Story < ActiveRecord::Base
 
   def num_comments
     num_coms = self.comments.length
-    if num_coms != 1
-      num_coms.to_s + " responses"
-    else
+    if num_coms == 1
       num_coms.to_s + " response"
+    elsif num_coms == 0
+      ""      
+    else
+      num_coms.to_s + " responses"
     end
   end
 end

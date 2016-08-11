@@ -42,6 +42,20 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many(
+    :followers,
+    class_name: "Following",
+    foreign_key: :followee_id,
+    primary_key: :id
+  )
+
+  has_many(
+    :followees,
+    class_name: "Following",
+    foreign_key: :follower_id,
+    primary_key: :id
+  )
+
   attr_reader :password
 
   def self.find_by_credentials(username, password)
