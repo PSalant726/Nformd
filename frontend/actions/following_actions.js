@@ -7,12 +7,12 @@ const FollowingActions = {
     FollowingApiUtil.fetchFollowings(userId, this.receiveFollowings);
   },
 
-  createFollowing(following){
-    FollowingApiUtil.createFollowing(following, this.receiveNewFollowee);
+  addFollowee(followeeId){
+    FollowingApiUtil.addFollowee(followeeId, this.receiveNewFollowee);
   },
 
-  deleteFollowing(following){
-    FollowingApiUtil.deleteFollowing(following, this.removeFollowee);
+  deleteFollowee(followingId){
+    FollowingApiUtil.deleteFollowee(followingId, this.removeFollowee);
   },
 
   receiveFollowings(followings){

@@ -21,6 +21,14 @@ const appRouter = (
   </Router>
 );
 
+
+const FollowingApiUtil = require('./util/following_api_util');
+const FollowingStore = require('./stores/following_store');
+window.followApi = FollowingApiUtil;
+window.followStore = FollowingStore;
+
+
+
 document.addEventListener("DOMContentLoaded", function(){
   if (window.currentUser) {
     SessionActions.receiveCurrentUser(window.currentUser);

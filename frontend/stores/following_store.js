@@ -6,28 +6,41 @@ const FollowingStore = new Store(AppDispatcher);
 
 let _followers = {};
 let _followees = {};
+let _following_id = "";
 
 const resetFollowings = function(followings){
   _followers = {};
   _followees = {};
+  _following_id = "";
   followings.followers.forEach(follower => {
     _followers[follower.id] = follower;
   });
   followings.followees.forEach(followee => {
     _followees[followee.id] = followee;
   });
+  _following_id = followings.following_id;
 };
 
 const addFollowee = function(followee){
+  _following_id = "";
   _followees[followee.id] = followee;
 };
 
 const removeFollowee = function(followee_id){
+  _following_id = "";
   delete _followees[followee_id];
 };
 
-FollowingStore.following = function(){
-  return Object.assign({}, _following);
+FollowingStore.followers = function(){
+  return Object.assign({}, _followers);
+};
+
+FollowingStore.followees = function(){
+  return Object.assign({}, _followees);
+};
+
+FollowingStore.following_id = function(){
+  return _following_id;
 };
 
 FollowingStore.__onDispatch = function(payload){
@@ -46,3 +59,5 @@ FollowingStore.__onDispatch = function(payload){
       break;
   }
 };
+
+module.exports = FollowingStore;

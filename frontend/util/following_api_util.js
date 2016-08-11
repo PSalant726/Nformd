@@ -7,18 +7,18 @@ const FollowingApiUtil = {
     });
   },
 
-  createFollowing(following, success){
+  addFollowee(followeeId, success){
     $.ajax({
-      url: `api/users/${following.followee_id}/followings`,
+      url: `api/users/${followeeId}/followings`,
       method: 'POST',
-      data: following,
+      data: followeeId,
       success
     });
   },
 
-  deleteFollowing(following, success){
+  deleteFollowee(followingId, success){
     $.ajax({
-      url: `api/users/${following.followee_id}/followings`,
+      url: `api/followings/${followingId}`,
       method: 'DELETE',
       success
     });
