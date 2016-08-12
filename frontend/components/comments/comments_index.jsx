@@ -21,6 +21,7 @@ const CommentsIndex = React.createClass({
 
   componentWillUnmount(){
     this.commentListener.remove();
+    this.userListener.remove();
   },
 
   getComments(){
