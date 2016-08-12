@@ -4,7 +4,7 @@ User.delete_all
 # NB: KEEP THE GUEST USER FOR GUEST LOGIN!
 User.create(username: "Guest", password: "password", email: "Guest@noemail.com")
 
-5.times do
+15.times do
   username = [
     Faker::Superhero.name,
     Faker::StarWars.character,
@@ -46,10 +46,21 @@ end
 # Seed followings
 Following.delete_all
 
-30.times do
+40.times do
   following = Following.new(
     follower_id: User.all.sample.id,
     followee_id: User.all.sample.id
   )
   redo unless following.save
+end
+
+# Seed recommends
+Recommend.delete_all
+
+50.times do
+  recommend = Recommend.new(
+    author_id: User.all.sample.id,
+    story_id: Story.all.sample.id
+  )
+  redo unless recommend.save
 end

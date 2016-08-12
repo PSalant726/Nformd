@@ -61,4 +61,8 @@ class Story < ActiveRecord::Base
       num_coms.to_s + " responses"
     end
   end
+
+  def num_recommends
+    self.recommends.length
+  end
 end

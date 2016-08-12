@@ -14,5 +14,6 @@ Rails.application.routes.draw do
     end
     resources :comments, except: [:show]
     resources :followings, only: [:destroy]
+    resources :recommends, except: [:edit, :update]
   end
 end

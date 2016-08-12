@@ -1,1 +1,1 @@
-json.partial! 'recomment', recommend: @recommend
+json.partial! 'recommend', recommend: @recommend

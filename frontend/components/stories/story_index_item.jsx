@@ -1,4 +1,6 @@
 const React = require('react');
+const SessionStore = require('../../stores/session_store');
+const RecommendActions = require('../../actions/recommend_actions');
 const TimeAgo = require('react-timeago').default;
 const Link = require('react-router').Link;
 
@@ -9,6 +11,35 @@ const StoryIndexItem = React.createClass({
     } else {
       return username;
     }
+  },
+
+  recommendButton(){
+    if(this.props.story.author.id === SessionStore.currentUser().id){
+      return(
+        <div className="story-recommends">
+          <div className="recommend-pic" />
+          { this.props.story.num_recommends }
+        </div>
+      );
+    } else {
+      return(
+        <button
+          onClick={ this.recommendToggle }
+          className="story-recommends">
+          <div className="recommend-pic" />
+          { this.props.story.num_recommends }
+        </button>
+      );
+    }
+  },
+
+  recommendToggle(){
+    // NB: For now this can only add recommends. Still working on
+    // removing your recommend if you click on it again.
+    RecommendActions.createRecommend({
+      author_id: SessionStore.currentUser().id,
+      story_id: this.props.story.id
+    });
   },
 
   render(){
@@ -57,6 +88,7 @@ const StoryIndexItem = React.createClass({
           Read more...
         </Link>
         <div className="story-likes-comments group">
+          { this.recommendButton() }
           <Link
             to={ `/stories/${this.props.story.id}` }
             className="story-comments">

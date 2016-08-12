@@ -23,10 +23,10 @@ Nformd is a web application inspired by Medium that will be built using Ruby on 
   - [x] Smooth, bug-free navigation
   - [x] Adequate seed data to demonstrate the site's features
   - [x] Adequate CSS styling
-- [ ] Likes/Favorites
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
+- [x] Recommends
+  - [x] Smooth, bug-free navigation
+  - [x] Adequate seed data to demonstrate the site's features
+  - [x] Adequate CSS styling
 - [ ] Infinite Scroll for Stories
 
 ## Design Docs
@@ -108,13 +108,13 @@ Phase 3 adds organization to the Comments. Comments belong to a Story, which has
 
 **objective:** Users can Recommend Stories for later viewing.
 
-- [ ] create `Recommends` model and join table
+- [x] create `Recommends` model and join table
 - build out API, Flux loop, and components for:
   - [ ] fetching Recommended Stories for Users
-  - [ ] adding Recommends to Stories
+  - [x] adding Recommends to Stories
   - [ ] un-Recommending Stories
-- [ ] Style new elements
-- [ ] Seed additional Stories, add Recommends for the seeded Stories
+- [x] Style new elements
+- [x] Seed additional Stories, add Recommends for the seeded Stories
 
 ### Phase 6: - Pagination / infinite scroll for Stories Index (1 day, W2 F 6pm)
 

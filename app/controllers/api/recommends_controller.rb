@@ -1,6 +1,7 @@
-class Api::CommentsController < ApplicationController
+class Api::RecommendsController < ApplicationController
   def create
     @recommend = current_user.recommends.new(recommend_params)
+    debugger
     if @recommend.save
       render 'api/recommends/show'
     else
