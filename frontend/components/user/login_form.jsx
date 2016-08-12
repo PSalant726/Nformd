@@ -47,7 +47,7 @@ const LoginForm = React.createClass({
   guestSignin(event){
     event.preventDefault();
     SessionActions.login({
-      username: "Guest",
+      username: "guest.user",
       password: "password"
     },
       this.props.closeModal
