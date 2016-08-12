@@ -17,7 +17,7 @@ const CommentApiUtil = {
 
   fetchCommentsByAuthor(authorId, success){
     $.ajax({
-      url: `api/${authorId}/comments`,
+      url: `api/users/${authorId}/comments`,
       method: 'GET',
       success
     });
