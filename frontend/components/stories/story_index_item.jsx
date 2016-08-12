@@ -1,10 +1,24 @@
 const React = require('react');
 const SessionStore = require('../../stores/session_store');
 const RecommendActions = require('../../actions/recommend_actions');
+const RecommendStore = require('../../stores/recommend_store');
 const TimeAgo = require('react-timeago').default;
 const Link = require('react-router').Link;
 
 const StoryIndexItem = React.createClass({
+  getInitialState(){
+    return({ recommends: {} });
+  },
+
+  componentDidMount(){
+    this.recommendsListener = RecommendStore.addListener(this.onChange);
+    RecommendActions.fetchRecommendsByStory(this.props.story.id);
+  },
+
+  onChange(){
+    this.setState({ recommends: RecommendStore.all() });
+  },
+
   author(username, fname, lname){
     if (fname && lname){
       return fname + " " + lname;
@@ -14,11 +28,11 @@ const StoryIndexItem = React.createClass({
   },
 
   recommendButton(){
-    if(this.props.story.author.id === SessionStore.currentUser().id){
+    if(this.props.story.author.id === SessionStore.currentUser().id || !SessionStore.isUserLoggedIn()){
       return(
         <div className="story-recommends">
           <div className="recommend-pic" />
-          { this.props.story.num_recommends }
+          { Object.keys(this.state.recommends).length }
         </div>
       );
     } else {
@@ -27,7 +41,7 @@ const StoryIndexItem = React.createClass({
           onClick={ this.recommendToggle }
           className="story-recommends">
           <div className="recommend-pic" />
-          { this.props.story.num_recommends }
+          { Object.keys(this.state.recommends).length }
         </button>
       );
     }
