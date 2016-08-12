@@ -102,19 +102,19 @@ Phase 3 adds organization to the Comments. Comments belong to a Story, which has
   - [x] adding Followers to Users
   - [x] unfollowing Users
 - [x] Style new elements
-- [ ] Seed additional Users and add Followers to the seeded Users
+- [x] Seed additional Users and add Followers to the seeded Users
 
-### [Phase 5][phase-five]: Allow Likes/Favorites in Stories (1 days, W2 Th 6pm)
+### [Phase 5][phase-five]: Allow Users to 'Recommend' Stories (1 days, W2 Th 6pm)
 
-**objective:** Users can Like Stories, or Favorite them for later viewing.
+**objective:** Users can Recommend Stories for later viewing.
 
-- [ ] create `Likes` model and join table
+- [ ] create `Recommends` model and join table
 - build out API, Flux loop, and components for:
-  - [ ] fetching Liked Stories for Users
-  - [ ] adding Likes to Stories
-  - [ ] un-Liking Stories
+  - [ ] fetching Recommended Stories for Users
+  - [ ] adding Recommends to Stories
+  - [ ] un-Recommending Stories
 - [ ] Style new elements
-- [ ] Seed additional Stories, add Likes for the seeded Stories
+- [ ] Seed additional Stories, add Recommends for the seeded Stories
 
 ### Phase 6: - Pagination / infinite scroll for Stories Index (1 day, W2 F 6pm)
 

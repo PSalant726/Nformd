@@ -28,7 +28,7 @@ author_id   | integer   | not null, foreign key (references users), indexed
 created_at  | datetime  | not null
 updated_at  | datetime  | not null
 
-## comments
+## comments (responses) (join table)
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
@@ -45,10 +45,9 @@ id                | integer   | not null, primary key
 follower_id       | integer   | not null, foreign key (references users), indexed
 user_followed_id  | integer   | not null, foreign key (references users), indexed
 
-## likes
+## recommends (join table)
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-name        | string    | not null
-story_id    | integer   | not null, foreign key (references stories), indexed
 author_id   | integer   | not null, foreign key (references users), indexed
+story_id    | integer   | not null, foreign key (references stories), indexed
