@@ -1,0 +1,7 @@
+const RecommendConstants = {
+  RECOMMENDS_RECEIVED: "RECOMMENDS_RECEIVED",
+  RECOMMEND_RECEIVED: "RECOMMEND_RECEIVED",
+  RECOMMEND_REMOVED: "RECOMMEND_REMOVED"
+};
+
+module.exports = RecommendConstants;
