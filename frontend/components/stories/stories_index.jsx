@@ -3,24 +3,36 @@ const StoryStore = require('../../stores/story_store');
 const StoryActions = require('../../actions/story_actions');
 const StoryIndexItem = require('./story_index_item');
 const SessionStore = require('../../stores/session_store');
+const RecommendActions = require('../../actions/recommend_actions');
+const RecommendStore = require('../../stores/recommend_store');
 const Link = require('react-router').Link;
 
 const StoriesIndex = React.createClass({
   getInitialState(){
-    return({ stories: [] });
+    return({
+      stories: [],
+      recommends: {}
+    });
   },
 
   componentDidMount(){
     this.storyListener = StoryStore.addListener(this.getStories);
+    this.recommendsListener = RecommendStore.addListener(this.getRecommends);
     StoryActions.fetchStories();
+    RecommendActions.fetchRecommends();
   },
 
   componentWillUnmount(){
     this.storyListener.remove();
+    this.recommendsListener.remove();
   },
 
   getStories(){
     this.setState({ stories: StoryStore.all() });
+  },
+
+  getRecommends(){
+    this.setState({ recommends: RecommendStore.all() });
   },
 
   writeStoryLink(){
@@ -40,7 +52,10 @@ const StoriesIndex = React.createClass({
 
     let storyIndexItems = _stories.map((story, i) => {
       return(
-        <StoryIndexItem key={ i } story={ story } />
+        <StoryIndexItem
+          key={ i }
+          story={ story }
+          recommends={ this.state.recommends } />
       );
     });
 
