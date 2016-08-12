@@ -88,7 +88,10 @@ Users can follow and be followed by other users. These relationships are stored 
 
 Followings are maintained on the frontend in the `FollowingStore`. Because viewing another user's profile page enables a Follow/Unfollow toggle button, these relationships can quickly be created and destroyed. The users total follows and total followers are displayed directly above the button, and the totals are continuously updated in real time.
 
-![follow button screenshot](follow_button.png)
+![follow button screenshot](./app/assets/images/follow_button_unfollowed.png)
+
+![follow button screenshot](./app/assets/images/follow_button_following.png)
+
 
 ## Future Directions for the Project
 
