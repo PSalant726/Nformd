@@ -17,8 +17,8 @@ const setRecommend = function(recommend){
   _recommends[recommend.id] = recommend;
 };
 
-const removeRecommend = function(recommend){
-  delete _recommends[recommend.id];
+const removeRecommend = function(recId){
+  delete _recommends[recId];
 };
 
 RecommendStore.all = function(){

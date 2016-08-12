@@ -10,7 +10,9 @@ class Api::RecommendsController < ApplicationController
 
   def destroy
     @recommend = Recommend.find(params[:id])
+    recId = @recommend.id
     @recommend.destroy
+    render json: recId
   end
 
   def index

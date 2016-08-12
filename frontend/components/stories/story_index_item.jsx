@@ -45,13 +45,22 @@ const StoryIndexItem = React.createClass({
   },
 
   recommendToggle(){
-    // NB: For now this can only add recommends. Still working on
-    // removing your recommend if you click on it again.
-    RecommendActions.createRecommend({
-      author_id: SessionStore.currentUser().id,
-      story_id: this.props.story.id
+    let recStoryIds = Object.keys(SessionStore.currentUser().recommended_stories).map(id => {
+      return SessionStore.currentUser().recommended_stories[id];
     });
-    this.setState({ recommends: RecommendStore.all() });
+    if (recStoryIds.includes(this.props.story.id)){
+      let recIds = Object.keys(SessionStore.currentUser().recommended_stories);
+      for(var i = 0; i < recIds.length; i++){
+        if(SessionStore.currentUser().recommended_stories[recIds[i]] === this.props.story.id){
+          RecommendActions.deleteRecommend(recIds[i]);
+        }
+      }
+    } else {
+      RecommendActions.createRecommend({
+        author_id: SessionStore.currentUser().id,
+        story_id: this.props.story.id
+      });
+    }
   },
 
   render(){
