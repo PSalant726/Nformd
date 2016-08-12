@@ -1,137 +1,107 @@
 # Nformd
 
-[Nformd][heroku]
+[Nformd live][heroku]
 
-[heroku]: https://nformd.herokuapp.com/
+[heroku]: http://nformd.herokuapp.com
 
-## Minimum Viable Product
+Nformd is a full-stack web application inspired by Medium.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Flux architectural framework on the frontend.  
 
-Nformd is a web application inspired by Medium that will be built using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
+## Features & Implementation
 
-- [x] Hosting on Heroku
-- [x] New account creation, login, and guest/demo login
-- [ ] A production README, replacing this README
-- [x] Stories
-  - [x] Smooth, bug-free navigation
-  - [x] Adequate seed data to demonstrate the site's features
-  - [x] Adequate CSS styling
-- [x] Commenting on Stories
-  - [x] Smooth, bug-free navigation
-  - [x] Adequate seed data to demonstrate the site's features
-  - [x] Adequate CSS styling
-- [x] Follows and Feed
-  - [x] Smooth, bug-free navigation
-  - [x] Adequate seed data to demonstrate the site's features
-  - [x] Adequate CSS styling
-- [x] Recommends
-  - [x] Smooth, bug-free navigation
-  - [x] Adequate seed data to demonstrate the site's features
-  - [x] Adequate CSS styling
-- [ ] Infinite Scroll for Stories
+### Single-Page App
 
-## Design Docs
-* [View Wireframes][views]
-* [React Components][components]
-* [Flux Cycles][flux-cycles]
-* [API endpoints][api-endpoints]
-* [DB schema][schema]
+Nformd only ever loads a single webpage; all content is delivered on one static page.  The children of the root element, the `app` component, listen to a `SessionStore` and render content based on calls to `SessionStore.currentUser()` and `SessionStore.isUserLoggedIn()`.  Sensitive information and functionality meant only for users with accounts are kept out of the frontend of the app unless a user has been successfully authenticated.
 
-[views]: docs/views.md
-[components]: docs/components.md
-[flux-cycles]: docs/flux-cycles.md
-[api-endpoints]: docs/api-endpoints.md
-[schema]: docs/schema.md
+```javascript
+SessionStore.currentUser = function () {
+  return Object.assign({}, _currentUser);
+};
 
-## Implementation Timeline
+SessionStore.isUserLoggedIn = function () {
+  return !!_currentUser.id;
+};
+  ```
 
-### [Phase 1][phase-one]: Backend setup and Front End User Authentication (2 days, W1 W 6pm)
+### Story Rendering and Creation
 
-**Objective:** Functioning rails project with front-end Authentication
+On the database side, the Stories are stored in one table, which contains columns for `id`, `title`, `body`, `author_id` and `created_at`.  Upon login, all stories in the database are rendered to the `stories_index` component, a child of the `app` component (which renders the `nav_bar` above the stories).  These stories are held in the `StoryStore` until the user logs out.  
 
-- [x] create new project
-- [x] create `User` model
-- [x] authentication backend setup
-- [x] create `StaticPages` controller and root view
-- [x] set up webpack & flux scaffold with skeleton files
-- [x] setup `APIUtil` to interact with the API
-- [x] set up flux cycle for front-end authentication
-- [x] user signup/sign-in components
-- [x] blank landing component after sign-in
-- [x] style sign-in/signup components
-- [x] seed users
+Individual stories are rendered as `story_index_item`s, subcomponents of the `stories_index`. These show the author's customizable profile picture and name, as well as the time elapsed since the story was published, the estimated read time of the story, the story's title, a 25-word preview of the story, the number of recommendations that the story has received, and finally the number of textual responses to the story. The layout of the `stories_index` page is taken directly from Medium and styled to mimic Medium almost exactly:
 
-### [Phase 2][phase-two]: Stories Model, API, and components (2 days, W1 F 6pm)
+![stories_index](./app/assets/images/stories_index.png)
 
-**Objective:** Stories can be created, read, edited and destroyed through the API.
+Story creation takes advantage of the recently released Draft.js framework for rich text editing.
 
-- [x] create `Story` model
-- [x] seed the database with a small amount of test data
-- [x] CRUD API for Stories (`StoriesController`)
-- [x] jBuilder views for Stories
-- [x] test out API interaction in the console.
-- implement each Story component, building out the flux loop as needed.
-  - [x] `Story Flux Loop`
-  - [x] `StoriesIndex`
-  - [x] `StoryIndexItem`
-  - [x] `StoryShow`
-  - [x] `StoryForm`
-- [x] style Stories components
-- [x] seed Stories
+### Responses
 
-### [Phase 3][phase-three]: Comments (2 day, W2 Tu 6pm)
+Implementing Responses started with a `comments` table in the database, which contains columns including `author_id` and `story_id`, `body`, and `created_at`.
 
-**Objective:** Comments belong to Stories, and can be viewed by Story.
+The React component structure for responses mirrored that of stories: the `comments_index` component renders a list of `comment_index_item`s as subcomponents, along with one `comment_form` component at the top of the list, with which users can add their own responses to stories. Newly added responses are immediately rendered inline.
 
-- [x] create `Comments` model
-- build out API, Flux loop, and components for:
-  - [x] Comment CRUD
-  - [x] adding Comments requires a Story
-  - [x] viewing Comments by Story
-- [x] Use CSS to style new components
-- [x] Seed Comments
+The responses to a given story are continuously monitored by the `CommentStore`.
 
-Phase 3 adds organization to the Comments. Comments belong to a Story, which has its own `Index` view.
+`comment_index.jsx` :
+```javascript
+const CommentsIndex = React.createClass({
 
-### [Phase 4][phase-four]: Followers and Feed (1 days, W2 W 6pm)
+  commentForm(){
+    if(SessionStore.isUserLoggedIn()){
+      return(
+        <CommentForm
+          currentUser={ this.state.currentUser }
+          storyId={ this.props.storyId } />
+      );
+    } else {
+      return(<div />);
+    }
+  },
 
-**Objective:** Users can follow many other Users, and view all of their followed Users' Stories in their Feed.
+  render(){
+    let _comments = this.state.comments.sort(function(a, b){
+      return new Date(b.created_at) - new Date(a.created_at);
+    });
 
-- [x] create `Followings` model and join table
-- build out API, Flux loop, and components for:
-  - [x] fetching Followers for Users
-  - [x] adding Followers to Users
-  - [x] unfollowing Users
-- [x] Style new elements
-- [x] Seed additional Users and add Followers to the seeded Users
+    let commentIndexItems = _comments.map((comment, i) => {
+      return(
+        <CommentIndexItem key={ i } comment={ comment } />
+      );
+    });
 
-### [Phase 5][phase-five]: Allow Users to 'Recommend' Stories (1 days, W2 Th 6pm)
+    return(
+      <div className="background">
+        <div className="comment-index">
+          <ul className="comment-list">
+            <li className="comment-list-title">Responses</li>
+            { this.commentForm() }
+            { commentIndexItems }
+          </ul>
+        </div>
+      </div>
+    );
+  }
+});
+```
 
-**objective:** Users can Recommend Stories for later viewing.
+### Followings
 
-- [x] create `Recommends` model and join table
-- build out API, Flux loop, and components for:
-  - [ ] fetching Recommended Stories for Users
-  - [x] adding Recommends to Stories
-  - [ ] un-Recommending Stories
-- [x] Style new elements
-- [x] Seed additional Stories, add Recommends for the seeded Stories
+Users can follow and be followed by other users. These relationships are stored in their own `followings` table in the database. The `followings` table is a join table that joins followees to their followers (joins users back to users) from a `follower_id` column to a `followee_id` column.
 
-### Phase 6: - Pagination / infinite scroll for Stories Index (1 day, W2 F 6pm)
+Followings are maintained on the frontend in the `FollowingStore`. Because viewing another user's profile page enables a Follow/Unfollow toggle button, these relationships can quickly be created and destroyed. The users total follows and total followers are displayed directly above the button, and the totals are continuously updated in real time.
 
-**objective:** Add infinite scroll to Stories Index
+![follow button screenshot](follow_button.png)
 
-- [ ] Paginate Stories Index API to send 10 results at a time
-- [ ] Append next set of results when user scrolls and is near bottom
-- [ ] Make sure styling still looks good
-- [ ] Ensure we have enough seeded Stories to demo infinite scroll
+## Future Directions for the Project
 
-### Bonus Features (TBD)
-- [ ] Topics/Categories
-- [ ] Bookmarks
-- [ ] Multiple sessions
+In addition to the features already implemented, I plan to continue work on this project.  The next steps for FresherNote are outlined below.
 
-[phase-one]: docs/phases/phase1.md
-[phase-two]: docs/phases/phase2.md
-[phase-three]: docs/phases/phase3.md
-[phase-four]: docs/phases/phase4.md
-[phase-five]: docs/phases/phase5.md
+### Customized User Feed
+
+Below the user's profile, Medium displays a list of their followed users' stories, as well as their followed users' recent activity around the site (responses, recommendation, etc.). I plan to implement this feature for Nformd as well.
+
+### Rich(er) Text editing
+
+The cornerstone of Medium is their powerful story editing tools. I plan to utilize the wealth of currently unused Draft.js features to give users of Nformd a more robust and complete word processing experience.
+
+### Tags
+
+Stories cannot currently be tagged to categorize them. Implementing this feature would allow users to more quickly discover content that they find interesting.
