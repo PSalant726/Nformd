@@ -30,12 +30,12 @@ User.create(
 )
 
 User.create(
-  username: Faker::Internet.user_name("Leen Besien"),
+  username: Faker::Internet.user_name("Leen van Besien"),
   password: "password",
   email: Faker::Internet.email("Leen Besien"),
   avatar: File.open('app/assets/images/Leen_Besien.png'),
   fname: "Leen",
-  lname: "Besien",
+  lname: "van Besien",
   bio: "App Academy TA, molding yound minds daily"
 )
 

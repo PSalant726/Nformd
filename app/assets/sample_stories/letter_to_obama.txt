@@ -1,9 +1,17 @@
 Dear President Obama,
+
 During your keynote conversation at SXSW, you called for a concession on security in our digital devices, stating that you don’t believe in “an absolutist view” when it comes to cryptography on phones.
+
 We all want to find solutions to the problems of crime in our country and abroad, and technology can help us do that. Sometimes that means making compromises as a society. But reasonable people know that there’s one thing which isn’t subject to compromise: math.
+
 The basic security of our digital devices is made possible because of a field of applied mathematics known as cryptography. In short, this means taking data and scrambling it so that it can’t be understood. If you want to unscramble the data, you need to have a unique key that will unlock it, unraveling the code and turning seemingly random characters into a clear message.
+
 Cryptography is the foundation of information security throughout the digital world. It means that when you log into your email, you can read the messages — but other people can’t. We use crypto when we access our bank accounts, social networking sites, and documents stored in the cloud. Crypto safeguards our medical records, our location data, and the photos we send to our loved ones. The modern digital age and the Internet we have now were built atop the math of cryptography.
+
 Today, mathematicians, engineers, and some of your own advisors are saying the same thing about the encryption debate: you can’t build a backdoor into our digital devices that only good guys can use. Just like you can’t put a key under a doormat that only the FBI will ever find.
+
 This isn’t what certain career politicians and outspoken members of the Justice Department want you to believe. They’re searching for a quick-fix technical solution. They keep wondering why the engineering community can’t just find an answer. Even at SXSW you admitted that you didn’t have the expertise to design the kind of compromise you called for, where the encryption backdoors are magically secure and “accessible by the smallest number of people possible, for a subset of issues that we agree are important.” That’s because it’s not possible.
+
 Too often, technical experts are ignored. Maybe it’s because they’re speaking in the dull realities of computer science and math. But as simple as the message may be, it’s still true: math can’t be negotiated away just because it’s inconvenient.
+
 source: https://medium.com/@RaineyReitman/an-open-letter-to-president-obama-this-is-about-math-not-politics-3b73aa04aa5d#.l3cdvls0m
