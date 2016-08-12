@@ -26,7 +26,7 @@ User.create(
   avatar: File.open('app/assets/images/Patrick_Kovach.jpeg'),
   fname: "Patrick",
   lname: "Kovach-Long",
-  bio: "App Academy TA, molding yound minds daily"
+  bio: "App Academy TA, molding young minds daily"
 )
 
 User.create(
@@ -36,7 +36,7 @@ User.create(
   avatar: File.open('app/assets/images/Leen_Besien.png'),
   fname: "Leen",
   lname: "van Besien",
-  bio: "App Academy TA, molding yound minds daily"
+  bio: "App Academy TA, molding young minds daily"
 )
 
 User.create(
@@ -46,7 +46,7 @@ User.create(
   avatar: File.open('app/assets/images/Maurice_Roach.jpeg'),
   fname: "Maurice",
   lname: "Roach",
-  bio: "App Academy TA, molding yound minds daily"
+  bio: "App Academy TA, molding young minds daily"
 )
 
 User.create(
@@ -56,7 +56,7 @@ User.create(
   avatar: File.open('app/assets/images/Gigi_Campo.jpeg'),
   fname: "Gigi",
   lname: "Campo",
-  bio: "App Academy TA, molding yound minds daily"
+  bio: "App Academy TA, molding young minds daily"
 )
 
 User.create(
@@ -66,7 +66,7 @@ User.create(
   avatar: File.open('app/assets/images/Fred_Sladkey.jpeg'),
   fname: "Fred",
   lname: "Sladkey",
-  bio: "App Academy TA, molding yound minds daily"
+  bio: "App Academy TA, molding young minds daily"
 )
 
 User.create(
@@ -76,7 +76,7 @@ User.create(
   avatar: File.open('app/assets/images/Daniel_Colson.jpeg'),
   fname: "Daniel",
   lname: "Colson",
-  bio: "App Academy TA, molding yound minds daily"
+  bio: "App Academy TA, molding young minds daily"
 )
 
 # Seed Stories
