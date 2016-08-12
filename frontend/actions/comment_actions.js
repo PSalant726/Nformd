@@ -11,6 +11,10 @@ const CommentActions = {
     CommentApiUtil.fetchCommentsByStory(storyId, this.receiveAllComments);
   },
 
+  fetchCommentsByAuthor(authorId){
+    CommentApiUtil.fetchCommentsByAuthor(authorId, this.receiveAllComments);
+  },
+
   createComment(comment){
     CommentApiUtil.createComment(comment, this.receiveComment);
   },

@@ -15,6 +15,14 @@ const CommentApiUtil = {
     });
   },
 
+  fetchCommentsByAuthor(authorId, success){
+    $.ajax({
+      url: `api/${authorId}/comments`,
+      method: 'GET',
+      success
+    });
+  },
+
   createComment(comment, success){
     $.ajax({
       url: 'api/comments',

@@ -27,6 +27,13 @@ class Story < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many(
+    :recommends,
+    class_name: "Recommend",
+    foreign_key: :story_id,
+    primary_key: :id
+  )
+
   def read_time
     if (self.body.length / 275.0) < 1.0
       "1 min read"
@@ -49,7 +56,7 @@ class Story < ActiveRecord::Base
     if num_coms == 1
       num_coms.to_s + " response"
     elsif num_coms == 0
-      ""      
+      ""
     else
       num_coms.to_s + " responses"
     end

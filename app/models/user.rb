@@ -68,6 +68,13 @@ class User < ActiveRecord::Base
     source: :followee
   )
 
+  has_many(
+    :recommends,
+    class_name: "Recommend",
+    foreign_key: :author_id,
+    primary_key: :id
+  )
+
   attr_reader :password
 
   def self.find_by_credentials(username, password)
