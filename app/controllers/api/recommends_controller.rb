@@ -23,7 +23,7 @@ class Api::CommentsController < ApplicationController
   end
 
   def index_by_author
-    @recommends = Recommend.where(author_id: params[:author_id])
+    @recommends = Recommend.where(author_id: params[:user_id])
     render 'api/recommends/index'
   end
 
