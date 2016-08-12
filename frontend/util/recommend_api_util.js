@@ -23,20 +23,26 @@ const RecommendApiUtil = {
     });
   },
 
-  createRecommend(recommend, success){
+  createRecommend(recommend, success, fetchUser){
     $.ajax({
       url: 'api/recommends',
       method: 'POST',
       data: { recommend: recommend },
-      success
+      success: function(response){
+        success(response);
+        fetchUser(response);
+      }
     });
   },
 
-  deleteRecommend(id, success){
+  deleteRecommend(id, success, fetchUser){
     $.ajax({
       url: `api/recommends/${id}`,
       method: 'DELETE',
-      success
+      success: function(response){
+        success(response);
+        fetchUser(response);
+      }
     });
   }
 };

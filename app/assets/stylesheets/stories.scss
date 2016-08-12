@@ -379,7 +379,7 @@
   background-color: #F2FBF8;
 }
 
-.story-recommends {
+.story-recommends-unrecd {
   color: rgba(0,0,0,.44);
   transition: .1s background-color,.1s border-color,.1s color,.1s fill;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
@@ -388,12 +388,34 @@
   float: left;
 }
 
-.story-recommends:hover {
+.story-recommends-unrecd:hover {
   color: rgba(0,0,0,.8);
 }
 
-.recommend-pic {
-  background-image: asset-url("heart-icon.png");
+.recommend-pic-unrecd {
+  background-image: asset-url("heart_icon_white.png");
+  float: left;
+  height: 15px;
+  width: 15px;
+  background-size: 15px 15px;
+  margin: 3px 5px 0 3px;
+}
+
+.story-recommends-recd {
+  color: rgba(0,0,0,.44);
+  transition: .1s background-color,.1s border-color,.1s color,.1s fill;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  float: left;
+}
+
+.story-recommends-recd:hover {
+  color: rgba(0,0,0,.8);
+}
+
+.recommend-pic-recd {
+  background-image: asset-url("heart_icon_green.png");
   float: left;
   height: 15px;
   width: 15px;

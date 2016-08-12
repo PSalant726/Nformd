@@ -1,6 +1,7 @@
 const RecommendApiUtil = require('../util/recommend_api_util');
 const AppDispatcher = require('../dispatcher/dispatcher');
 const RecommendConstants = require('../constants/recommend_constants');
+const SessionActions = require('./session_actions');
 
 const RecommendActions = {
   fetchRecommends(){
@@ -16,11 +17,11 @@ const RecommendActions = {
   },
 
   createRecommend(recommend){
-    RecommendApiUtil.createRecommend(recommend, this.receiveRecommend);
+    RecommendApiUtil.createRecommend(recommend, this.receiveRecommend, SessionActions.fetchCurrentUser);
   },
 
   deleteRecommend(id){
-    RecommendApiUtil.deleteRecommend(id, this.removeRecommend);
+    RecommendApiUtil.deleteRecommend(id, this.removeRecommend, SessionActions.fetchCurrentUser);
   },
 
   receiveAllRecommends(recommends){

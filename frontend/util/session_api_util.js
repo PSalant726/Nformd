@@ -42,6 +42,14 @@ const SessionApiUtil = {
 			  console.log("Logout error in SessionApiUtil#logout");
 			}
     });
+  },
+
+  fetchCurrentUser(success){
+    $.ajax({
+      url: 'api/session',
+      method: 'GET',
+      success
+    });
   }
 };
 

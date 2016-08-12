@@ -14,33 +14,44 @@ const StoryIndexItem = React.createClass({
     }
   },
 
-  myRecommends(){
-    let myRecs = [];
+  numRecommends(){
+    let numRecs = [];
     for (let i = 0; i < this.props.recommends.length; i++){
       if(this.props.recommends[i].story_id === this.props.story.id){
-        myRecs.push(this.props.recommends[i]);
+        numRecs.push(this.props.recommends[i]);
       }
     }
-    return myRecs.length;
+    return numRecs.length;
   },
 
   recommendButton(){
     if(this.props.story.author.id === SessionStore.currentUser().id || !SessionStore.isUserLoggedIn()){
       return(
-        <div className="story-recommends">
-          <div className="recommend-pic" />
-          { this.myRecommends() }
+        <div className="story-recommends-unrecd">
+          <div className="recommend-pic-unrecd" />
+          { this.numRecommends() }
         </div>
       );
     } else {
-      return(
-        <button
-          onClick={ this.recommendToggle }
-          className="story-recommends">
-          <div className="recommend-pic" />
-          { this.myRecommends() }
-        </button>
-      );
+      if(SessionStore.currentUser().recommended_story_ids.includes(this.props.story.id)){
+        return(
+          <button
+            onClick={ this.recommendToggle }
+            className="story-recommends-recd">
+            <div className="recommend-pic-recd" />
+            { this.numRecommends() }
+          </button>
+        );
+      } else {
+        return(
+          <button
+            onClick={ this.recommendToggle }
+            className="story-recommends-unrecd">
+            <div className="recommend-pic-unrecd" />
+            { this.numRecommends() }
+          </button>
+        );
+      }
     }
   },
 

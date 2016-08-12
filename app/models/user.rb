@@ -121,6 +121,14 @@ class User < ActiveRecord::Base
     recs
   end
 
+  def recommended_story_ids
+    recs = [];
+    self.recommends.each do |recommend|
+      recs << recommend.story_id
+    end
+    recs
+  end
+
   private
 
   def ensure_session_token
