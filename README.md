@@ -1,8 +1,8 @@
 # Nformd
 
-[Nformd live][heroku]
+[Nformd live][livesite]
 
-[heroku]: http://nformd.herokuapp.com
+[livesite]: http://nformd.philsalant.com
 
 Nformd is a full-stack web application inspired by Medium.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Flux architectural framework on the frontend.  
 
