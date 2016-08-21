@@ -130,44 +130,30 @@ Story.create(
   author_id: User.where.not(username: "guest.user").sample.id
 )
 
-Story.create(
-  title: "I'm voting for Donald Trump",
-  body: File.read('app/assets/sample_stories/trump_love.txt'),
-  author_id: User.find_by(fname: "Tommy").id
-)
-
 # Seed Responses
-50.times do
+Story.all.each do |story|
   Comment.create(
-    story_id: Story.where.not(title: "I'm voting for Donald Trump").sample.id,
+    story_id: story.id,
     author_id: User.where.not(username: "guest.user").sample.id,
-    body: Faker::Hipster.paragraphs(1)[0]
+    body: "This is the first comment on this story!"
   )
 end
 
-Comment.create(
-  story_id: Story.find_by(title: "I'm voting for Donald Trump").id,
-  author_id: User.where.not(username: ["guest.user","tommy.duek"]).sample.id,
-  body: "Wow...."
-)
+50.times do
+  Comment.create(
+    story_id: Story.all.sample.id,
+    author_id: User.where.not(username: "guest.user").sample.id,
+    body: "This is another comment on this story!"
+  )
+end
 
-Comment.create(
-  story_id: Story.find_by(title: "I'm voting for Donald Trump").id,
-  author_id: User.where.not(username: ["guest.user","tommy.duek"]).sample.id,
-  body: "OMG Tommy!"
-)
-
-Comment.create(
-  story_id: Story.find_by(title: "I'm voting for Donald Trump").id,
-  author_id: User.where.not(username: ["guest.user","tommy.duek"]).sample.id,
-  body: "This can't be serious."
-)
-
-Comment.create(
-  story_id: Story.find_by(title: "I'm voting for Donald Trump").id,
-  author_id: User.find_by(username: "tommy.duek").id,
-  body: "Someone hacked my account!"
-)
+Story.all.each do |story|
+  Comment.create(
+    story_id: story.id,
+    author_id: User.where.not(username: "guest.user").sample.id,
+    body: "This is the most recent comment on this story!"
+  )
+end
 
 # Seed Followings
 Following.delete_all
