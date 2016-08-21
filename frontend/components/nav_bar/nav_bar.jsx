@@ -42,6 +42,12 @@ const NavBar = React.createClass({
     }
   },
 
+
+// TODO: Add this line below 'Write a Story' link and 'Sign In as Guest' button:
+// <div className="logged-out-nav-search"></div>
+// TODO: Add this line below 'Write a Story' link:
+// <div className="notfications-button"></div>
+
   userTools(){
     if (SessionStore.isUserLoggedIn()){
       return(
@@ -51,8 +57,6 @@ const NavBar = React.createClass({
             className="new-story">
             Write a story
           </Link>
-          <div className="logged-in-nav-search"></div>
-          <div className="notfications-button"></div>
           <hgroup
             className="nav-avatar"
             onClick={ this.menuToggle }>
@@ -69,10 +73,25 @@ const NavBar = React.createClass({
             onClick={ this.handleClick }>
             Sign in / Sign up
           </button>
-          <div className="logged-out-nav-search"></div>
+          <button
+            id="guest"
+            className="modal-toggle"
+            onClick={ this.guestSignin } >
+            Sign In as Guest
+          </button>
         </nav>
       );
     }
+  },
+
+  guestSignin(event){
+    event.preventDefault();
+    SessionActions.login({
+      username: "guest.user",
+      password: "password"
+    },
+      this.closeModal
+    );
   },
 
   render(){

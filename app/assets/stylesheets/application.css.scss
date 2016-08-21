@@ -118,6 +118,10 @@ input[type="submit"] {
   color: #1c9963;
 }
 
+#guest {
+  margin-left: 25px;
+}
+
 .logged-out-nav-search {
   background-image: asset-url("search.png");
   height: 22px;
@@ -283,6 +287,7 @@ input[type="submit"] {
   border-radius: 50%;
   float: right;
   margin-bottom: -3px;
+  margin-left: 25px;
   cursor: pointer;
   overflow: hidden;
 }

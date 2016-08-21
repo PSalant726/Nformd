@@ -71,6 +71,9 @@ const StoryForm = React.createClass({
     hashHistory.push("stories/");
   },
 
+  // TODO: Add this line below 'publish-menu-button' hgroup:
+  // <div className="notfications-button"></div>
+
   userTools(){
     return(
       <div className="nav">
@@ -82,7 +85,6 @@ const StoryForm = React.createClass({
             menuVisible={ this.state.publishMenuVisible }
             handleSubmit={ this.handleSubmit } />
         </hgroup>
-        <div className="notfications-button"></div>
         <hgroup
           className="nav-avatar"
           onClick={ this.userMenuToggle }>
