@@ -6,10 +6,15 @@
   background: #FAFAFA;
 }
 
+.home-page-container {
+  max-width: 1000px;
+  margin: auto;
+}
+
 .story-index {
   margin: auto;
-  max-width: 1000px;
   padding: 35px 0 0 0;
+  float: left;
 }
 
 .story-list {
