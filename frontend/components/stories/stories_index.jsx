@@ -60,13 +60,11 @@ const StoriesIndex = React.createClass({
     });
 
     return(
-      <div className="background">
-        <div className="story-index">
-          <ul className="story-list">
-            { this.writeStoryLink() }
-            { storyIndexItems }
-          </ul>
-        </div>
+      <div className="story-index">
+        <ul className="story-list">
+          { this.writeStoryLink() }
+          { storyIndexItems }
+        </ul>
       </div>
     );
   }
