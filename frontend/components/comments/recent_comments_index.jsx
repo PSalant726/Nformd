@@ -45,7 +45,7 @@ const RecentCommentsIndex = React.createClass({
         );
       });
 
-      return this.commentIndexItems.slice(0, 3);
+      return this.commentIndexItems.slice(0, 5);
     }
   },
 
