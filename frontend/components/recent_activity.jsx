@@ -1,6 +1,6 @@
 const React = require('react');
 const RecentCommentsIndex = require('./comments/recent_comments_index');
-const RecentRecommends = require('./recent_recommends');
+const RecentRecommendsIndex = require('./recent_recommends_index');
 
 const RecentActivity = React.createClass({
   getInitialState(){
@@ -28,7 +28,7 @@ const RecentActivity = React.createClass({
       <div className="recent-activity"
         style={ { top: `${this.state.top}px` } }>
         <RecentCommentsIndex />
-        <RecentRecommends />
+        <RecentRecommendsIndex />
       </div>
     );
   }

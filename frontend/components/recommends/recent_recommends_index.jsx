@@ -1,6 +1,6 @@
 const React = require('react');
 
-const RecentRecommends = React.createClass({
+const RecentRecommendsIndex = React.createClass({
   render(){
     return(
       <div></div>
@@ -8,4 +8,4 @@ const RecentRecommends = React.createClass({
   }
 });
 
-module.exports = RecentRecommends;
+module.exports = RecentRecommendsIndex;

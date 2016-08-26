@@ -32,21 +32,17 @@ const RecentCommentsIndex = React.createClass({
   },
 
   recentComments(){
-    if (SessionStore.isUserLoggedIn()){
+    let _comments = this.state.comments.sort(function(a, b){
+      return new Date(b.created_at) - new Date(a.created_at);
+    });
 
-    } else {
-      let _comments = this.state.comments.sort(function(a, b){
-        return new Date(b.created_at) - new Date(a.created_at);
-      });
+    this.commentIndexItems = _comments.map((comment, i) => {
+      return(
+        <RecentCommentIndexItem key={ i } comment={ comment } />
+      );
+    });
 
-      this.commentIndexItems = _comments.map((comment, i) => {
-        return(
-          <RecentCommentIndexItem key={ i } comment={ comment } />
-        );
-      });
-
-      return this.commentIndexItems.slice(0, 5);
-    }
+    return this.commentIndexItems.slice(0, 5);
   },
 
   render(){
