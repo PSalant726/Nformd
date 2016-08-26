@@ -19,7 +19,7 @@ class Api::StoriesController < ApplicationController
   end
 
   def index
-    @stories = Story.all.includes(:author)
+    @stories = Story.all.includes(:author, :comments, :recommends)
   end
 
   def new

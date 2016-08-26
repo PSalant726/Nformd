@@ -1,6 +1,6 @@
 const React = require('react');
 const RecentCommentsIndex = require('./comments/recent_comments_index');
-const RecentRecommendsIndex = require('./recent_recommends_index');
+const RecentRecommendsIndex = require('./recommends/recent_recommends_index');
 
 const RecentActivity = React.createClass({
   getInitialState(){

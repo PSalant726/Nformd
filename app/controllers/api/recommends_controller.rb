@@ -16,7 +16,7 @@ class Api::RecommendsController < ApplicationController
   end
 
   def index
-    @recommends = Recommend.all.includes(:author)
+    @recommends = Recommend.all.includes(:author, :story)
   end
 
   def index_by_story

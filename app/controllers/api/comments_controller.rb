@@ -18,7 +18,7 @@ class Api::CommentsController < ApplicationController
   end
 
   def index
-    @comments = Comment.all.includes(:author)
+    @comments = Comment.all.includes(:author, :story)
   end
 
   def index_by_story
