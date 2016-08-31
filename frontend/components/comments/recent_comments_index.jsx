@@ -24,7 +24,7 @@ const RecentCommentsIndex = React.createClass({
   },
 
   getComments(){
-    this.setState({ comments: CommentStore.all() });
+    this.setState({ comments: CommentStore.all().slice(0, 6) });
   },
 
   getCurrentUser(){
@@ -42,7 +42,7 @@ const RecentCommentsIndex = React.createClass({
       );
     });
 
-    return this.commentIndexItems.slice(0, 5);
+    return this.commentIndexItems;
   },
 
   render(){
