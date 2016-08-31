@@ -1,1 +1,3 @@
-json.partial! 'recommend', collection: @recommends, as: :recommend
+json.array! @recommends do |recommend|
+  json.partial! 'recommend', recommend: recommend
+end
