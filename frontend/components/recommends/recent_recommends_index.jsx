@@ -24,7 +24,7 @@ const RecentRecommendsIndex = React.createClass({
   },
 
   getRecommends(){
-    this.setState({ recommends: RecommendStore.all().slice(0, 6) });
+    this.setState({ recommends: RecommendStore.all().slice(-6) });
   },
 
   getCurrentUser(){
