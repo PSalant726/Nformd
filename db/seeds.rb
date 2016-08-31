@@ -131,27 +131,26 @@ Story.create(
 )
 
 # Seed Responses
-Story.all.each do |story|
-  Comment.create(
-    story_id: story.id,
-    author_id: User.where.not(username: "guest.user").sample.id,
-    body: "This is the first comment on this story!"
-  )
-end
+Comment.delete_all
+
+comment_bodies = [
+  "Wow, what a great article!",
+  "This is awesome!",
+  "I had no idea about this, thanks!",
+  "Interesting...",
+  "While I disagree with what you say, I'd defend to the death your right to say it.",
+  "Fascinating insight here, thanks for sharing!",
+  "Have you thought about other philosophies here?",
+  "You'd be crazy not to agree with this!",
+  "Love these ideas!",
+  "I never thought about it this way..."
+]
 
 50.times do
   Comment.create(
     story_id: Story.all.sample.id,
     author_id: User.where.not(username: "guest.user").sample.id,
-    body: "This is another comment on this story!"
-  )
-end
-
-Story.all.each do |story|
-  Comment.create(
-    story_id: story.id,
-    author_id: User.where.not(username: "guest.user").sample.id,
-    body: "This is the most recent comment on this story!"
+    body: comment_bodies.sample
   )
 end
 
@@ -176,3 +175,17 @@ Recommend.delete_all
   )
   redo unless recommend.save
 end
+
+# NB: Add instructional story at the top of the feed:
+
+Story.create(
+  title: "Want to create stories of your own? Sign in as a guest!",
+  body: "The guest user can respond to articles by others, and recommend articles too!",
+  author_id: User.find_by(username: "guest.user").id
+)
+
+Comment.create(
+  story_id: Story.find_by(title: "Want to create stories of your own? Sign in as a guest!").id,
+  author_id: User.find_by(username: "guest.user").id,
+  body: "You can respond to your own stories too!"
+)
