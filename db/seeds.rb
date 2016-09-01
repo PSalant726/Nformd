@@ -79,6 +79,16 @@ User.create(
   bio: "App Academy TA, molding young minds daily"
 )
 
+User.create(
+  username: Faker::Internet.user_name("Oscar Alvarez"),
+  password: "password",
+  email: Faker::Internet.email("Oscar Alvarez"),
+  avatar: File.open('app/assets/images/Oscar_Alvarez.jpeg'),
+  fname: "Oscar",
+  lname: "Alvarez",
+  bio: "App Academy TA, molding young minds daily"
+)
+
 # Seed Stories
 Story.delete_all
 
