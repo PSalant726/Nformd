@@ -144,7 +144,7 @@ Story.create(
 
 Story.create(
   title: "Want to create stories of your own? Sign in as a guest!",
-  body: "The guest user can respond to articles by others, and recommend articles too!",
+  body: "The guest user can respond to articles by others, and recommend articles too! While editing, highlight text to enable <b>rich</b> <i>text</i> <u>content</u> and add <a href='http://nformd.philsalant.com'>links</a>!",
   author_id: User.find_by(username: "guest.user").id
 )
 

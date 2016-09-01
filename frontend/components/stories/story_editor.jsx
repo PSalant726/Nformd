@@ -2,7 +2,7 @@ const React = require('react');
 // import { Editor, EditorState, RichUtils } from 'draft-js';
 import Editor from 'react-medium-editor';
 require('medium-editor/dist/css/medium-editor.css');
-require('medium-editor/dist/css/themes/default.css');
+require('medium-editor/dist/css/themes/beagle.css');
 
 const StoryEditor = React.createClass({
   getInitialState(){

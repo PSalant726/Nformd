@@ -246,6 +246,19 @@
   white-space: pre-wrap;
 }
 
+.show-body > p > a, .show-body a {
+  color: #02B875;
+}
+
+.show-body > p i, .show-body i {
+  font-style: italic;
+}
+
+.show-body > p > a:hover, .show-body a:hover {
+  color: #1c9963;
+  text-decoration: underline;
+}
+
 .show-comments-section{
   background-color: #FAFAFA;
   padding-top: 5px;
@@ -306,6 +319,10 @@
   height: 65vh;
   display: block;
   resize: none;
+}
+
+.form-editor > div > p i {
+  font-style: italic;
 }
 
 .form-style-button {
