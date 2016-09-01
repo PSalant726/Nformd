@@ -43,8 +43,9 @@ class Story < ActiveRecord::Base
   end
 
   def preview
-    prev = self.body.split(" ").first(25)
-    if self.body.split(" ").length <= 25
+    text = Nokogiri::HTML(self.body).xpath('//text()').to_s
+    prev = text.split(" ").first(25)
+    if text.split(" ").length <= 25
       return prev.join(" ")
     else
       return prev.join(" ") + "..."

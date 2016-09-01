@@ -66,6 +66,12 @@ const StoryShow = React.createClass({
     hashHistory.push('/');
   },
 
+  createMarkup(){
+    return (
+      { __html: this.state.story.body }
+    );
+  },
+
   render(){
     let timeAgo;
     if (this.state.story.created_at === ""){
@@ -112,7 +118,9 @@ const StoryShow = React.createClass({
         </div>
         <div className="show-story-container">
           <h1 className="show-title">{ this.state.story.title }</h1>
-          <p className="show-body">{ this.state.story.body }</p>
+          <div
+            className="show-body"
+            dangerouslySetInnerHTML={ this.createMarkup() } />
         </div>
         <div className="show-comments-section group">
           <CommentsIndex storyId={ this.props.params.id } />

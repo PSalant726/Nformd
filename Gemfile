@@ -42,6 +42,9 @@ gem 'figaro'
 # Use Amazon Web Services for image storage
 gem 'aws-sdk', '>= 2.0'
 
+# Use Nokogiri to parse raw text from HTML
+gem 'nokogiri'
+
 group :production do
   gem 'rails_12factor'
 end

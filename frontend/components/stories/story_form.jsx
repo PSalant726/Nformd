@@ -51,12 +51,11 @@ const StoryForm = React.createClass({
       body: this.state.story.body } });
   },
 
-  editorChange(_editorState){
+  editorChange(text){
     this.setState({
-      editorState: _editorState,
       story: {
         title: this.state.story.title,
-        body: _editorState.getCurrentContent().getPlainText()
+        body: text
       }
     });
   },
