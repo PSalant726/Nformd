@@ -321,8 +321,13 @@
   resize: none;
 }
 
-.form-editor > div > p i {
+.form-editor i {
   font-style: italic;
+}
+
+.form-editor a {
+  color: #02B875;
+  text-decoration: underline;
 }
 
 .form-style-button {
