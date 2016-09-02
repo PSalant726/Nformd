@@ -67,7 +67,7 @@ const StoryForm = React.createClass({
       body: this.state.story.body
     });
     this.setState({ story: { title: "", body: "" } });
-    hashHistory.push("stories/");
+    hashHistory.push("/");
   },
 
   // TODO: Add this line below 'publish-menu-button' hgroup:

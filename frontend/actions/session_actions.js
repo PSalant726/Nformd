@@ -38,6 +38,7 @@ const SessionActions = {
       actionType: SessionConstants.LOGIN,
       user: user
     });
+    hashHistory.push("/");
   },
 
   removeCurrentUser(){
