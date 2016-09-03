@@ -10,7 +10,7 @@ Nformd is a full-stack web application inspired by Medium.  It utilizes Ruby on 
 
 ### Single-Page App
 
-Nformd only ever loads a single webpage; all content is delivered on one static page.  The children of the root element, the `app` component, listen to a `SessionStore` and render content based on calls to `SessionStore.currentUser()` and `SessionStore.isUserLoggedIn()`.  Sensitive information and functionality meant only for users with accounts are kept out of the frontend of the app unless a user has been successfully authenticated.
+Nformd only ever loads a single webpage; all content is delivered on one static page.  The children of the root element, the `app` component, listen to a `SessionStore` and render content based on calls to `SessionStore.currentUser()` and `SessionStore.isUserLoggedIn()`.  Sensitive information and functionality meant only for users with accounts are kept out of the front end of the app unless a user has been successfully authenticated.
 
 ```javascript
 SessionStore.currentUser = function () {
@@ -86,7 +86,7 @@ const CommentsIndex = React.createClass({
 
 Users can follow and be followed by other users. These relationships are stored in their own `followings` table in the database. The `followings` table is a join table that joins followees to their followers (joins users back to users) from a `follower_id` column to a `followee_id` column.
 
-Followings are maintained on the frontend in the `FollowingStore`. Because viewing another user's profile page enables a Follow/Unfollow toggle button, these relationships can quickly be created and destroyed. The users total follows and total followers are displayed directly above the button, and the totals are continuously updated in real time.
+Followings are maintained on the front end in the `FollowingStore`. Because viewing another user's profile page enables a Follow/Unfollow toggle button, these relationships can quickly be created and destroyed. The users total follows and total followers are displayed directly above the button, and the totals are continuously updated in real time.
 
 ![follow button screenshot](./app/assets/images/follow_button_unfollowed.png)
 
