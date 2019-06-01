@@ -34,7 +34,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker', '~> 1.6.6'
 
 # Use paperclip for attaching images to rails models
-gem 'paperclip', '~> 5.0.0.beta1'
+gem 'paperclip', '>= 5.2.0'
 
 # Use figaro to protect sensitive data
 gem 'figaro'
